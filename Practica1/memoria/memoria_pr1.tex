@@ -1,0 +1,61 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\begin{titlepage}
+\title{{\Huge Práctica 1 - Seguridad Informática}}
+\author{Pedro Tamargo \and Juan José Tambo}
+\date{\today}
+\clearpage\maketitle
+\thispagestyle{empty}
+\tableofcontents
+\end{titlepage}
+
+\section{Tarea 1: Experimentar con las funciones en Bash}
+
+Para esta sección se ha creado una función \texttt{foo} y se ha ejecutado el siguiente código:\\
+
+\begin{Huge}
+\textbf{Cambiar esto}
+\end{Huge}
+\texttt{foo=´() { echo "Prueba vulnerabilidad"; }; echo "Soy vulnerable";´}\\
+\texttt{echo \${}foo}\\
+\texttt{export foo}\\
+\texttt{bash\_{}shellshock}\\
+
+Tras la ejecución de este código podemos observar como el intérprete \emph{BASH\_{}SHELLSHOCK} es vulnerable (Figura \ref{fig:tarea1_shellshock}).
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.3]{images/Tarea_1.png}
+\caption{Intérprete afectado por el ataque \emph{shellshock}}
+\label{fig:tarea1_shellshock} 
+\end{figure}
+
+\section{Tarea 2: Configuración de programas CGI}
+
+Hola
+
+\section{Tarea 3: pasar datos a Bash a través de las variables de entorno}
+
+Hola
+
+\section{Tarea 4: Lanzamiento del Ataque Shellshock}
+
+Hola
+
+\section{Tarea 5: Obtención de un Shell inverso a través de un ataque Shellshock}
+
+Hola
+
+
+
+\end{document}
