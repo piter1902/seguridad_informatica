@@ -8,6 +8,7 @@
 \usepackage{listings}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
+
 \begin{document}
 
 \begin{titlepage}
@@ -45,7 +46,17 @@ Si repetimos el experimento utilizando el intérprete \emph{Bash} con la vulnera
 
 \section{Tarea 2: Configuración de programas CGI}
 
-Hola
+Para la configuración de programas CGI se debe de crear un archivo con la extensión \emph{CGI} y escribir con \emph{bash shell}.
+A continuación se puede observar un ejemplo básico de programa CGI que muestra "Hello world" si se accede a él desde cualquier máquina.
+\lstinputlisting{listings/tarea2.cgi} 
+
+Se debe insertar el script en \texttt{/usr/lib/cgi-bin} y cambiar sus permisos a 755 (ya que es ejecutable). Estas modificaciones deben ser hechas desde administrador, al ser un directorio que sólo se puede modificar con permisos de administración. 
+
+Por último, se puede acceder al programa de manera remota de las siguientes maneras: 
+\begin{itemize}
+	\item Escribiendo en navegador la siguiente URL \texttt{http://_IP_MAQUINA/cgi-bin/progName.cgi}
+	\item Utilizando el comando curl: \texttt{curl http://_IP_MAQUINA/cgi-bin/progName.cgi}
+\end{itemize}
 
 \section{Tarea 3: pasar datos a Bash a través de las variables de entorno}
 
