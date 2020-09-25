@@ -49,10 +49,34 @@ Hola
 
 \section{Tarea 3: pasar datos a Bash a través de las variables de entorno}
 
-Para enviar un \emph{string} arbitrario al programa \emph{CGI} se ha utilizado el siguiente script:\\
+Para enviar un \emph{string} arbitrario al programa \emph{CGI} se ha utilizado el siguiente \emph{script}:\\
 
 \lstinputlisting{listings/tarea3.cgi}
 
+Este \emph{script} muestra todas las variables de entorno de los procesos ejecutados. Si accedemos a la dirección: \texttt{http://IP\_{}MV/cgi-bin/myprog2.cgi} se puede observar el resultado (Figura \ref{fig:tarea3_normal}).
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.6]{images/Tarea_3.png}
+\caption{Resultado del acceso al programa cgi}
+\label{fig:tarea3_normal} 
+\end{figure}
+
+Para modificar el código de una de las variables de entorno se va a utilizar la cabecera \emph{HTTP} \emph{User-Agent}. Esta cabecera se modificará mediante el siguiente comando:
+
+\begin{lstlisting}
+curl -A "Mi variable de entorno" http://192.168.56.106/cgi-bin/myprog2.cgi
+\end{lstlisting}
+
+Se puede observar que la respuesta del servidor contiene la variable de entorno \emph{HTTP\_{}USER\_{}AGENT} pero con un valor distinto al ejemplo anterior (Figura \ref{fig:tarea3_modificado}).
+
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.9]{images/Tarea_3_modificada.png}
+\caption{Respuesta del servidor con la variable de entorno \emph{HTTP\_{}USER\_{}AGENT} modificada}
+\label{fig:tarea3_modificado} 
+\end{figure}
 
 \section{Tarea 4: Lanzamiento del Ataque Shellshock}
 
