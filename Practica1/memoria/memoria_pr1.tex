@@ -8,6 +8,10 @@
 \usepackage{listings}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
+\lstset{
+	frame = single,
+	framexleftmargin = 15pt
+}
 
 \begin{document}
 
@@ -171,8 +175,9 @@ Al ejecutar el comando en la máquina deseada, este se conecta con el proceso \e
 	\label{fig:tarea5_shell_inverso}
 \end{figure}
 
+\newpage
 El problema de este ataque recae en conseguir ejecutar el comando en la máquina remota cuando no se tiene acceso físico a la misma. Para ello se utiliza el ataque \emph{Shellshock}, mediante el cual se pueden ejecutar comandos de forma remota.
-Para poder realizar el ataque, se utilizará el siguiente comando desde la máquina atacante, mediante el cual se conseguirá establecer un \emph{reverse shell} en la máquina indicada.\\
+Para poder realizar el ataque, se ejecutará el siguiente comando desde la máquina atacante, mediante el cual se conseguirá establecer un \emph{reverse shell} en la máquina indicada.\\
 
 \begin{lstlisting}
 curl -v \ 
