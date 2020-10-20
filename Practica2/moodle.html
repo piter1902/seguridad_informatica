@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html  dir="ltr" lang="es" xml:lang="es" class="no-js">
+<head>
+    <title>ADD Unizar - Moodle</title>
+    <link rel="shortcut icon" href="https://moodle.unizar.es/add/theme/image.php/essential/theme/1601966169/favicon"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="moodle, ADD Unizar - Moodle" />
+<link rel="stylesheet" type="text/css" href="https://moodle.unizar.es/add/theme/yui_combo.php?rollup/3.17.2/yui-moodlesimple-min.css" /><script id="firstthemesheet" type="text/css">/** Required in order to fix style inclusion problems in IE with YUI **/</script><link rel="stylesheet" type="text/css" href="https://moodle.unizar.es/add/theme/styles.php/essential/1601966169_1601966340/all" />
+<script type="text/javascript">
+//<![CDATA[
+var M = {}; M.yui = {};
+M.pageloadstarttime = new Date();
+M.cfg = {"wwwroot":"https:\/\/moodle.unizar.es\/add","sesskey":"jgkT8om8QS","themerev":"1601966169","slasharguments":1,"theme":"essential","iconsystemmodule":"core\/icon_system_fontawesome","jsrev":"1601966169","admin":"admin","svgicons":true,"usertimezone":"Europa\/Madrid","contextid":2};var yui1ConfigFn = function(me) {if(/-skin|reset|fonts|grids|base/.test(me.name)){me.type='css';me.path=me.path.replace(/\.js/,'.css');me.path=me.path.replace(/\/yui2-skin/,'/assets/skins/sam/yui2-skin')}};
+var yui2ConfigFn = function(me) {var parts=me.name.replace(/^moodle-/,'').split('-'),component=parts.shift(),module=parts[0],min='-min';if(/-(skin|core)$/.test(me.name)){parts.pop();me.type='css';min=''}
+if(module){var filename=parts.join('-');me.path=component+'/'+module+'/'+filename+min+'.'+me.type}else{me.path=component+'/'+component+'.'+me.type}};
+YUI_config = {"debug":false,"base":"https:\/\/moodle.unizar.es\/add\/lib\/yuilib\/3.17.2\/","comboBase":"https:\/\/moodle.unizar.es\/add\/theme\/yui_combo.php?","combine":true,"filter":null,"insertBefore":"firstthemesheet","groups":{"yui2":{"base":"https:\/\/moodle.unizar.es\/add\/lib\/yuilib\/2in3\/2.9.0\/build\/","comboBase":"https:\/\/moodle.unizar.es\/add\/theme\/yui_combo.php?","combine":true,"ext":false,"root":"2in3\/2.9.0\/build\/","patterns":{"yui2-":{"group":"yui2","configFn":yui1ConfigFn}}},"moodle":{"name":"moodle","base":"https:\/\/moodle.unizar.es\/add\/theme\/yui_combo.php?m\/1601966169\/","combine":true,"comboBase":"https:\/\/moodle.unizar.es\/add\/theme\/yui_combo.php?","ext":false,"root":"m\/1601966169\/","patterns":{"moodle-":{"group":"moodle","configFn":yui2ConfigFn}},"filter":null,"modules":{"moodle-core-blocks":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification"]},"moodle-core-checknet":{"requires":["base-base","moodle-core-notification-alert","io-base"]},"moodle-core-dock":{"requires":["base","node","event-custom","event-mouseenter","event-resize","escape","moodle-core-dock-loader","moodle-core-event"]},"moodle-core-dock-loader":{"requires":["escape"]},"moodle-core-tooltip":{"requires":["base","node","io-base","moodle-core-notification-dialogue","json-parse","widget-position","widget-position-align","event-outside","cache-base"]},"moodle-core-handlebars":{"condition":{"trigger":"handlebars","when":"after"}},"moodle-core-languninstallconfirm":{"requires":["base","node","moodle-core-notification-confirm","moodle-core-notification-alert"]},"moodle-core-lockscroll":{"requires":["plugin","base-build"]},"moodle-core-formchangechecker":{"requires":["base","event-focus","moodle-core-event"]},"moodle-core-dragdrop":{"requires":["base","node","io","dom","dd","event-key","event-focus","moodle-core-notification"]},"moodle-core-chooserdialogue":{"requires":["base","panel","moodle-core-notification"]},"moodle-core-actionmenu":{"requires":["base","event","node-event-simulate"]},"moodle-core-maintenancemodetimer":{"requires":["base","node"]},"moodle-core-notification":{"requires":["moodle-core-notification-dialogue","moodle-core-notification-alert","moodle-core-notification-confirm","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-core-notification-dialogue":{"requires":["base","node","panel","escape","event-key","dd-plugin","moodle-core-widget-focusafterclose","moodle-core-lockscroll"]},"moodle-core-notification-alert":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-confirm":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-exception":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-ajaxexception":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-event":{"requires":["event-custom"]},"moodle-core-popuphelp":{"requires":["moodle-core-tooltip"]},"moodle-core_availability-form":{"requires":["base","node","event","event-delegate","panel","moodle-core-notification-dialogue","json"]},"moodle-backup-backupselectall":{"requires":["node","event","node-event-simulate","anim"]},"moodle-backup-confirmcancel":{"requires":["node","node-event-simulate","moodle-core-notification-confirm"]},"moodle-course-categoryexpander":{"requires":["node","event-key"]},"moodle-course-management":{"requires":["base","node","io-base","moodle-core-notification-exception","json-parse","dd-constrain","dd-proxy","dd-drop","dd-delegate","node-event-delegate"]},"moodle-course-modchooser":{"requires":["moodle-core-chooserdialogue","moodle-course-coursebase"]},"moodle-course-dragdrop":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification","moodle-course-coursebase","moodle-course-util"]},"moodle-course-util":{"requires":["node"],"use":["moodle-course-util-base"],"submodules":{"moodle-course-util-base":{},"moodle-course-util-section":{"requires":["node","moodle-course-util-base"]},"moodle-course-util-cm":{"requires":["node","moodle-course-util-base"]}}},"moodle-course-formatchooser":{"requires":["base","node","node-event-simulate"]},"moodle-form-shortforms":{"requires":["node","base","selector-css3","moodle-core-event"]},"moodle-form-passwordunmask":{"requires":[]},"moodle-form-dateselector":{"requires":["base","node","overlay","calendar"]},"moodle-form-showadvanced":{"requires":["node","base","selector-css3"]},"moodle-question-preview":{"requires":["base","dom","event-delegate","event-key","core_question_engine"]},"moodle-question-qbankmanager":{"requires":["node","selector-css3"]},"moodle-question-searchform":{"requires":["base","node"]},"moodle-question-chooser":{"requires":["moodle-core-chooserdialogue"]},"moodle-availability_completion-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_date-form":{"requires":["base","node","event","io","moodle-core_availability-form"]},"moodle-availability_grade-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_group-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_grouping-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_profile-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-qtype_ddimageortext-dd":{"requires":["node","dd","dd-drop","dd-constrain"]},"moodle-qtype_ddimageortext-form":{"requires":["moodle-qtype_ddimageortext-dd","form_filepicker"]},"moodle-qtype_ddmarker-form":{"requires":["moodle-qtype_ddmarker-dd","form_filepicker","graphics","escape"]},"moodle-qtype_ddmarker-dd":{"requires":["node","event-resize","dd","dd-drop","dd-constrain","graphics"]},"moodle-qtype_ddwtos-dd":{"requires":["node","dd","dd-drop","dd-constrain"]},"moodle-mod_assign-history":{"requires":["node","transition"]},"moodle-mod_bigbluebuttonbn-modform":{"requires":["base","node"]},"moodle-mod_bigbluebuttonbn-broker":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bigbluebuttonbn-recordings":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bigbluebuttonbn-rooms":{"requires":["base","node","datasource-get","datasource-jsonschema","datasource-polling","moodle-core-notification"]},"moodle-mod_bigbluebuttonbn-imports":{"requires":["base","node"]},"moodle-mod_forum-subscriptiontoggle":{"requires":["base-base","io-base"]},"moodle-mod_quiz-toolboxes":{"requires":["base","node","event","event-key","io","moodle-mod_quiz-quizbase","moodle-mod_quiz-util-slot","moodle-core-notification-ajaxexception"]},"moodle-mod_quiz-quizbase":{"requires":["base","node"]},"moodle-mod_quiz-autosave":{"requires":["base","node","event","event-valuechange","node-event-delegate","io-form"]},"moodle-mod_quiz-modform":{"requires":["base","node","event"]},"moodle-mod_quiz-dragdrop":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification","moodle-mod_quiz-quizbase","moodle-mod_quiz-util-base","moodle-mod_quiz-util-page","moodle-mod_quiz-util-slot","moodle-course-util"]},"moodle-mod_quiz-questionchooser":{"requires":["moodle-core-chooserdialogue","moodle-mod_quiz-util","querystring-parse"]},"moodle-mod_quiz-util":{"requires":["node","moodle-core-actionmenu"],"use":["moodle-mod_quiz-util-base"],"submodules":{"moodle-mod_quiz-util-base":{},"moodle-mod_quiz-util-slot":{"requires":["node","moodle-mod_quiz-util-base"]},"moodle-mod_quiz-util-page":{"requires":["node","moodle-mod_quiz-util-base"]}}},"moodle-mod_quiz-repaginate":{"requires":["base","event","node","io","moodle-core-notification-dialogue"]},"moodle-mod_scheduler-delselected":{"requires":["base","node","event"]},"moodle-mod_scheduler-saveseen":{"requires":["base","node","event"]},"moodle-mod_scheduler-studentlist":{"requires":["base","node","event","io"]},"moodle-message_airnotifier-toolboxes":{"requires":["base","node","io"]},"moodle-filter_glossary-autolinker":{"requires":["base","node","io-base","json-parse","event-delegate","overlay","moodle-core-event","moodle-core-notification-alert","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-filter_mathjaxloader-loader":{"requires":["moodle-core-event"]},"moodle-editor_atto-editor":{"requires":["node","transition","io","overlay","escape","event","event-simulate","event-custom","node-event-html5","node-event-simulate","yui-throttle","moodle-core-notification-dialogue","moodle-core-notification-confirm","moodle-editor_atto-rangy","handlebars","timers","querystring-stringify"]},"moodle-editor_atto-plugin":{"requires":["node","base","escape","event","event-outside","handlebars","event-custom","timers","moodle-editor_atto-menu"]},"moodle-editor_atto-menu":{"requires":["moodle-core-notification-dialogue","node","event","event-custom"]},"moodle-editor_atto-rangy":{"requires":[]},"moodle-report_eventlist-eventfilter":{"requires":["base","event","node","node-event-delegate","datatable","autocomplete","autocomplete-filters"]},"moodle-report_loglive-fetchlogs":{"requires":["base","event","node","io","node-event-delegate"]},"moodle-gradereport_grader-gradereporttable":{"requires":["base","node","event","handlebars","overlay","event-hover"]},"moodle-gradereport_history-userselector":{"requires":["escape","event-delegate","event-key","handlebars","io-base","json-parse","moodle-core-notification-dialogue"]},"moodle-tool_capability-search":{"requires":["base","node"]},"moodle-tool_lp-dragdrop-reorder":{"requires":["moodle-core-dragdrop"]},"moodle-tool_monitor-dropdown":{"requires":["base","event","node"]},"moodle-assignfeedback_editpdf-editor":{"requires":["base","event","node","io","graphics","json","event-move","event-resize","transition","querystring-stringify-simple","moodle-core-notification-dialog","moodle-core-notification-alert","moodle-core-notification-warning","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-atto_accessibilitychecker-button":{"requires":["color-base","moodle-editor_atto-plugin"]},"moodle-atto_accessibilityhelper-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_align-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_bold-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_charmap-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_clear-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_collapse-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_emoticon-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_equation-button":{"requires":["moodle-editor_atto-plugin","moodle-core-event","io","event-valuechange","tabview","array-extras"]},"moodle-atto_html-button":{"requires":["moodle-editor_atto-plugin","event-valuechange"]},"moodle-atto_image-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_indent-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_italic-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_link-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_managefiles-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_managefiles-usedfiles":{"requires":["node","escape"]},"moodle-atto_media-button":{"requires":["moodle-editor_atto-plugin","moodle-form-shortforms"]},"moodle-atto_noautolink-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_orderedlist-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_recordrtc-button":{"requires":["moodle-editor_atto-plugin","moodle-atto_recordrtc-recording"]},"moodle-atto_recordrtc-recording":{"requires":["moodle-atto_recordrtc-button"]},"moodle-atto_rtl-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_strike-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_subscript-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_superscript-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_table-button":{"requires":["moodle-editor_atto-plugin","moodle-editor_atto-menu","event","event-valuechange"]},"moodle-atto_title-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_underline-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_undo-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_unorderedlist-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-tinymce_mathslate-textool":{"requires":["dd-drag","dd-proxy","dd-drop","event","json"]},"moodle-tinymce_mathslate-editor":{"requires":["dd-drag","dd-proxy","dd-drop","event","tabview","io-base","json","moodle-tinymce_mathslate-textool","moodle-tinymce_mathslate-mathjaxeditor"]},"moodle-tinymce_mathslate-dialogue":{"requires":["escape","moodle-local_mathslate-editor","moodle-tinymce_mathslate-editor"]},"moodle-tinymce_mathslate-mathjaxeditor":{"requires":["moodle-tinymce_mathslate-snippeteditor","dd-drop"]},"moodle-tinymce_mathslate-snippeteditor":{"requires":["json"]}}},"gallery":{"name":"gallery","base":"https:\/\/moodle.unizar.es\/add\/lib\/yuilib\/gallery\/","combine":true,"comboBase":"https:\/\/moodle.unizar.es\/add\/theme\/yui_combo.php?","ext":false,"root":"gallery\/1601966169\/","patterns":{"gallery-":{"group":"gallery"}}}},"modules":{"core_filepicker":{"name":"core_filepicker","fullpath":"https:\/\/moodle.unizar.es\/add\/lib\/javascript.php\/1601966169\/repository\/filepicker.js","requires":["base","node","node-event-simulate","json","async-queue","io-base","io-upload-iframe","io-form","yui2-treeview","panel","cookie","datatable","datatable-sort","resize-plugin","dd-plugin","escape","moodle-core_filepicker","moodle-core-notification-dialogue"]},"core_comment":{"name":"core_comment","fullpath":"https:\/\/moodle.unizar.es\/add\/lib\/javascript.php\/1601966169\/comment\/comment.js","requires":["base","io-base","node","json","yui2-animation","overlay","escape"]},"mathjax":{"name":"mathjax","fullpath":"https:\/\/cdn.jsdelivr.net\/npm\/mathjax@2.7.8\/MathJax.js?delayStartupUntil=configured"}}};
+M.yui.loader = {modules: {}};
+
+//]]>
+</script>
+
+<link rel="stylesheet" type="text/css" href="//moodle.unizar.es/css/cookieconsent.min.css" />
+<meta name="moodle-validation" content="38687615a37c074485f86dc30d6a4fe4"><meta name="description" content="Anillo Digital Docente - plataforma Moodle de apoyo a la docencia de la Universidad de Zaragoza.
+Es responsabilidad del usuario (en su caso, profesor, alumno del curso o invitado) el uso correcto de los servicios del campus virtual ADD y la obligación de guardar la confidencialidad de las contraseñas de acceso a cada uno de los recursos y plataformas. Para obtener más información sobre la Normativa de uso de los recursos informáticos y Servicios de red y las condiciones de uso del Anillo Digital Docente pulse aquí." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google web fonts -->
+        <!-- iOS Homescreen Icons -->
+    
+<link rel="apple-touch-icon" sizes="57x57" href="//moodle.unizar.es/add/pluginfile.php/1/theme_essential/iphoneicon/1601966169/apple-touch-icon-precomposed.png"/>
+<link rel="apple-touch-icon" sizes="72x72" href="//moodle.unizar.es/add/pluginfile.php/1/theme_essential/ipadicon/1601966169/apple-touch-icon-152x152-precomposed.png"/>
+<link rel="apple-touch-icon" sizes="114x114" href="//moodle.unizar.es/add/pluginfile.php/1/theme_essential/iphoneretinaicon/1601966169/apple-touch-icon-76x76-precomposed.png"/>
+<link rel="apple-touch-icon" sizes="144x144" href="//moodle.unizar.es/add/pluginfile.php/1/theme_essential/ipadretinaicon/1601966169/apple-touch-icon-152x152-precomposed.png"/></head>
+
+<body  id="page-site-index" class="format-site course path-site gecko dir-ltr lang-es yui-skin-sam yui3-skin-sam moodle-unizar-es--add pagelayout-frontpage course-1 context-2 notloggedin desktopdevice pagewidthvariable custommenuitems hasboringlayout floatingsubmit has-region-side-pre used-region-side-pre has-region-footer-left empty-region-footer-left has-region-footer-middle empty-region-footer-middle has-region-footer-right empty-region-footer-right has-region-hidden-dock empty-region-hidden-dock has-region-home empty-region-home has-region-page-top empty-region-page-top has-region-header empty-region-header side-pre-only">
+
+<div class="skiplinks">
+    <a href="#maincontent" class="skip">Saltar a contenido principal</a>
+</div><script type="text/javascript" src="https://moodle.unizar.es/add/theme/yui_combo.php?rollup/3.17.2/yui-moodlesimple-min.js"></script><script type="text/javascript" src="https://moodle.unizar.es/add/lib/javascript.php/1601966169/lib/javascript-static.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+document.body.className += ' jsenabled';
+//]]>
+</script>
+
+
+<header role="banner">
+    <nav id="essentialnavbar" role="navigation" class="moodle-has-zindex logo">
+        <div class="navbar">
+            <div class="container-fluid navbar-inner">
+                <div class="row-fluid">
+                    <div class="custommenus pull-left">
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target="#essentialmenus">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                        <a class="brand" href="https://moodle.unizar.es/add/">ADDUnizar</a>                    <div class="pull-right">
+                        <div class="usermenu navbarrightitem">
+                            <ul class="nav"><li class="dropdown"><a class="loginurl" href="https://moodle.unizar.es/add/login/index.php"><em><span aria-hidden="true" class="fa fa-sign-in"></span>Acceder</em></a></li></ul>                        </div>
+                        <div class="messagemenu navbarrightitem">
+                                                    </div>
+                        <div class="navbarrightitem">
+                                                    </div>
+                                                                        <div id="custom_menu_editing" class="navbarrightitem">
+                                                    </div>
+                        <div class="navbarrightitem">
+                                                    </div>
+                    </div>
+                        <div id="essentialmenus" class="nav-collapse collapse pull-left">
+                            <div id="custom_menu_language" class="custom_menu"><ul class="nav"><li class="dropdown langmenu"><a href="https://moodle.unizar.es/add/" class="dropdown-toggle" data-toggle="dropdown" title="Idioma"><span aria-hidden="true" class="fa fa-flag"></span>Español - Internacional ‎(es)‎<span aria-hidden="true" class="fa fa-caret-right"></span></a><div class="dropdown-menu"><ul><li><a title="Aragonés ‎(an)‎" href="https://moodle.unizar.es/add/?lang=an"><span aria-hidden="true" class="fa fa-language"></span>Aragonés ‎(an)‎</a></li><li><a title="Asturianu ‎(ast)‎" href="https://moodle.unizar.es/add/?lang=ast"><span aria-hidden="true" class="fa fa-language"></span>Asturianu ‎(ast)‎</a></li><li><a title="Català ‎(ca)‎" href="https://moodle.unizar.es/add/?lang=ca"><span aria-hidden="true" class="fa fa-language"></span>Català ‎(ca)‎</a></li><li><a title="Català (Valencià) ‎(ca_valencia)‎" href="https://moodle.unizar.es/add/?lang=ca_valencia"><span aria-hidden="true" class="fa fa-language"></span>Català (Valencià) ‎(ca_valencia)‎</a></li><li><a title="Deutsch ‎(de)‎" href="https://moodle.unizar.es/add/?lang=de"><span aria-hidden="true" class="fa fa-language"></span>Deutsch ‎(de)‎</a></li><li><a title="English ‎(en)‎" href="https://moodle.unizar.es/add/?lang=en"><span aria-hidden="true" class="fa fa-language"></span>English ‎(en)‎</a></li><li><a title="Español - Internacional ‎(es)‎" href="https://moodle.unizar.es/add/?lang=es"><span aria-hidden="true" class="fa fa-language"></span>Español - Internacional ‎(es)‎</a></li><li><a title="Euskara ‎(eu)‎" href="https://moodle.unizar.es/add/?lang=eu"><span aria-hidden="true" class="fa fa-language"></span>Euskara ‎(eu)‎</a></li><li><a title="Français ‎(fr)‎" href="https://moodle.unizar.es/add/?lang=fr"><span aria-hidden="true" class="fa fa-language"></span>Français ‎(fr)‎</a></li><li><a title="Galego ‎(gl)‎" href="https://moodle.unizar.es/add/?lang=gl"><span aria-hidden="true" class="fa fa-language"></span>Galego ‎(gl)‎</a></li><li><a title="Italiano ‎(it)‎" href="https://moodle.unizar.es/add/?lang=it"><span aria-hidden="true" class="fa fa-language"></span>Italiano ‎(it)‎</a></li><li><a title="Português - Portugal ‎(pt)‎" href="https://moodle.unizar.es/add/?lang=pt"><span aria-hidden="true" class="fa fa-language"></span>Português - Portugal ‎(pt)‎</a></li><li><a title="Ελληνικά ‎(el)‎" href="https://moodle.unizar.es/add/?lang=el"><span aria-hidden="true" class="fa fa-language"></span>Ελληνικά ‎(el)‎</a></li><li><a title="正體中文 ‎(zh_tw)‎" href="https://moodle.unizar.es/add/?lang=zh_tw"><span aria-hidden="true" class="fa fa-language"></span>正體中文 ‎(zh_tw)‎</a></li><li><a title="简体中文 ‎(zh_cn)‎" href="https://moodle.unizar.es/add/?lang=zh_cn"><span aria-hidden="true" class="fa fa-language"></span>简体中文 ‎(zh_cn)‎</a></li></ul></div></ul></div><div id="custom_menu" class="custom_menu"><ul class="nav"><li class="dropdown"><a href="#cm_submenu_2" class="dropdown-toggle" data-toggle="dropdown" title="ADD">ADD<span aria-hidden="true" class="fa fa-caret-right"></span></a><div class="dropdown-menu"><ul><li><a title=" Web del Anillo Digital Docente" href="http://add.unizar.es" target="_blank"> Web del Anillo Digital Docente</a></li><li><a title=" OCW" href="https://ocw.unizar.es/ocw/" target="_blank"> OCW</a></li><li><a title=" Condiciones de uso del ADD" href="https://zaguan.unizar.es/record/31589/files/BOUZ-2015-007.pdf#BOUZ%203-15.indd%3A.68068" target="_blank"> Condiciones de uso del ADD</a></li></ul></div><li class="dropdown"><a href="#cm_submenu_3" class="dropdown-toggle" data-toggle="dropdown" title="Recursos y manuales">Recursos y manuales<span aria-hidden="true" class="fa fa-caret-right"></span></a><div class="dropdown-menu"><ul><li><a title=" AyudICa" href="https://ayudica.unizar.es" target="_blank"> AyudICa</a></li><li class="dropdown-submenu"><a href="http://goo.gl/OdTy6c" target="_blank" class="dropdown-toggle" data-toggle="dropdown" title=" Preguntas frecuentes (Faqs)"> Preguntas frecuentes (Faqs)</a><ul class="dropdown-menu"><li><a title=" Faqs de ADD" href="http://goo.gl/bQR9Ix" target="_blank"> Faqs de ADD</a></li></ul><li><a title=" Manuales" href="https://add.unizar.es/add/campusvirtual/moodle-plataforma-del-add" target="_blank"> Manuales</a></li><li><a title=" Formación para profesores" href="https://ice.unizar.es/" target="_blank"> Formación para profesores</a></li><li><a title=" Web de la BUZ sobre propiedad intelectual" href="https://biblioteca.unizar.es/propiedad-intelectual/propiedad-intelectual-deberias-saber" target="_blank"> Web de la BUZ sobre propiedad intelectual</a></li></ul></div></ul></div>                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="page-header" class="clearfix logo">
+        <div class="container-fluid">
+            <div class="row-fluid">
+<div class="pull-left logo-container"><a class="logo" href="//moodle.unizar.es/add" title="Página Principal"><img src="//moodle.unizar.es/add/pluginfile.php/1/theme_essential/logo/1601966169/logoUZmoodle2.png" class="img-responsive" alt="Página Principal" /></a>                </div>
+                                <a class="btn btn-icon collapsed" data-toggle="collapse" data-target="#essentialicons">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+
+                <div id='essentialicons' class="collapse pull-right">
+                        <div class="pull-right" id="socialnetworks">
+                            <p class="socialheading">Redes sociales</p>
+                            <ul class="socials unstyled">
+                                <li><button type="button" class="socialicon youtube" onclick="window.open(&#039;https://www.youtube.com/channel/UCBrxsvL6OspJwCpwToawvTQ&#039;)" title="URL de YouTube" aria-label="URL de YouTube"><span aria-hidden="true" class="fa fa-youtube"></span><span class="sr-only"></span></button></li><li><button type="button" class="socialicon website" onclick="window.open(&#039;http://add.unizar.es&#039;)" title="URL de la Página" aria-label="URL de la Página"><span aria-hidden="true" class="fa fa-globe"></span><span class="sr-only"></span></button></li>                            </ul>
+                        </div>
+                                            <div class="pull-right" id="mobileapps">
+                            <p class="socialheading">Apps</p>
+                            <ul class="socials unstyled">
+                                <li><button type="button" class="socialicon ios" onclick="window.open(&#039;https://itunes.apple.com/au/app/moodle-mobile/id633359593?mt=8&#039;)" title="iPhone/iPad (App Store)" aria-label="iPhone/iPad (App Store)"><span aria-hidden="true" class="fa fa-apple"></span><span class="sr-only"></span></button></li><li><button type="button" class="socialicon android" onclick="window.open(&#039;https://play.google.com/store/apps/details?id=com.moodle.moodlemobile&amp;hl=en&#039;)" title="Android (Google Play)" aria-label="Android (Google Play)"><span aria-hidden="true" class="fa fa-android"></span><span class="sr-only"></span></button></li>                            </ul>
+                        </div>
+                                    </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div id="page" class="container-fluid">
+        <section class="slideshow">
+        <!-- Start Slideshow -->
+                <!-- End Slideshow -->
+    </section>
+
+    <section>
+        <!-- Start Main Regions -->
+
+        <!-- Start Alerts -->
+
+        <!-- Alert #1 -->
+        
+        <!-- Alert #2 -->
+        
+        <!-- Alert #3 -->
+                <!-- End Alerts -->
+
+        <!-- Start Frontpage Content -->
+                <!-- End Frontpage Content -->
+
+        <!-- Start Marketing Spots -->
+        <!-- End Marketing Spots -->
+
+<!-- Start Header blocks was Middle blocks -->
+<!-- End Header blocks was Middle blocks -->
+
+        <div id="page-content" class="row-fluid">
+            <section id="main-and-pre">
+<div id="content" class="span9 pull-right"><section id="region-main"><span class="notifications" id="user-notifications"></span><div role="main"><span id="maincontent"></span><div class="box generalbox sitetopic"><ul class="section img-text"><li class="activity label modtype_label " id="module-1325173"><div><div class="mod-indent-outer"><div class="mod-indent"></div><div><div class="contentwithoutlink "><div class="no-overflow"><div class="no-overflow"><h1>ATENCIÓN. Moodle Falso</h1>
+<p>El <span style="box-sizing: border-box; font-weight: bold;">acceso a los nuevos cursos del 2020-21</span>, creados a partir del día 28 de julio, se realizará <span style="box-sizing: border-box; font-weight: bold;">mediante <span style="font-size: large;">NIP y contraseña administrativa</span> para todos los usuarios de Unizar </span>(los estudiantes ya acceden actualmente con su NIA). En caso de problemas para acceder, puedes recuperar tu contraseña en <a href="https://identidad.unizar.es/">https://identidad.unizar.es</a></p>
+<p><strong>El acceso con correo electrónico</strong> <strong>dejará de funcionar el 31 de octubre de 2020 </strong>y, en adelante, solo se podrá acceder con el NIP a todos los cursos.</p>
+<div style="text-align: justify;">En este periodo de transición entre sistemas, el profesorado de los cursos 18-19 y 19-20 observará que tiene dos usuarios en esos cursos:</div>
+<div style="text-align: justify;"></div>
+<ol>
+<li style="text-align: justify;">Un <strong>usuario solo con su “Nombre” al acceder con el NIP y contraseña administrativa.</strong> Este usuario es imprescindible para importar contenidos a cursos 20-21 desde cursos anteriores que todavía son visibles.</li>
+<li style="text-align: justify;">Otro <strong>usuario denominado “(Caduca 31oct2020) Nombre</strong>” corresponde con el que han estado utilizando accediendo <strong>con correo electrónico y contraseña de correo </strong>y permitirá seguir editando con el mismo usuario profesor utilizado hasta ahora.</li>
+</ol>
+<p></p>
+<p>Los <strong>cursos ADD/Moodle para 2020-21</strong> se pueden crear a partir del día 28 de julio de 2020, a través de la dirección <a href="https://geo.unizar.es" target="_blank">https://geo.unizar.es</a> con la nueva versión de la aplicación GEO (Gestión de Enseñanza Online). En esta nueva versión de la aplicación se incluye el POD de cada profesor, para facilitar la creación de los cursos Moodle correspondientes a sus asignaturas y grupos docentes. Si el POD no está actualizado se podrán crear los cursos buscando la asignatura por el código Sigma de la asignatura (ver FAQ “Creación de cursos reglados ADD/Moodle” en Ayudica).</p>
+<p>Más información en <span style="color: #223d71; font-family: Verdana; font-size: 14px;">iUnizar  </span><a href="http://www.unizar.es/actualidad/vernoticia_ng.php?id=54999&amp;idh=10750&amp;pk_campaign=iunizar20200728&amp;pk_source=iunizar-personalunizar" target="_blank">http://www.unizar.es/actualidad/vernoticia_ng.php?id=54999&amp;idh=10750&amp;pk_campaign=iunizar20200728&amp;pk_source=iunizar-personalunizar</a></p></div></div></div></div></div></div></li><li class="activity label modtype_label " id="module-1303877"><div><div class="mod-indent-outer"><div class="mod-indent"></div><div><div class="contentwithoutlink "><div class="no-overflow"><div class="no-overflow"><p></p>
+<h2><span id="docs-internal-guid-879e8c50-7fff-5fd7-ca54-dadfa5a23242"><b>Información actualizada sobre actividades virtuales en Unizar por el COVID-19</b></span></h2>
+<p><span style="font-size: large;">En la página <a href="https://add.unizar.es" target="_blank">https://add.unizar.es</a> se incluye toda la información y recomendaciones para la realización de actividades virtuales con las herramientas oficiales de Unizar con motivo de la suspensión de las clases presenciales.</span>   </p></div></div></div></div></div></div></li><li class="activity label modtype_label " id="module-781157"><div><div class="mod-indent-outer"><div class="mod-indent"></div><div><div class="contentwithoutlink "><div class="no-overflow"><div class="no-overflow"><p><a href="http://add.unizar.es/add/campusvirtual/propiedad-intelectual" target="_blank"><img src="https://moodle.unizar.es/add/pluginfile.php/1304265/mod_label/intro/ADD_guia_copyright_1_300x171.jpeg" alt="Resumen propiedad intelectual ADD" class="img-responsive atto_image_button_left" width="300" height="171"></a>AVISO LEGAL. Usos digitales de las obras conforme a
+      la Ley de Propiedad Intelectual, incluído el límite legal previsto
+      en el artículo 32.4 de la Ley de Propiedad Intelectual.<br>
+      <br>
+      A los efectos del artículo 32.4 de la Ley de Propiedad
+      Intelectual, la Universidad de Zaragoza ha suscrito el
+      correspondiente Convenio con&nbsp; CEDRO y VEGAP. En el caso de
+      aquellas obras puestas a
+        disposición en esta intranet que entran en el ámbito de
+      aplicación del citado Convenio, se trata de
+    obras protegidas por el derecho de autor, y su
+      reproducción y comunicación pública se han realizado bajo la
+      autorización prevista en el artículo 32.4 de la Ley de Propiedad
+      Intelectual y obtenida mediante el citado Convenio. Cualquier
+      reproducción, distribución, transformación y comunicación pública
+      en cualquier medio y de cualquier forma, fuera del alcance de
+      dicha autorización, deberán ser objeto de una licencia específica.<br>
+      <br>
+      Preguntas frecuentes sobre propiedad intelectual&nbsp; en <a href="https://ayudica.unizar.es/otrs/public.pl?Action=PublicFAQExplorer;CategoryID=37" target="_blank">AyudICa</a><br></p></div></div></div></div></div></div></li></ul></div><div class="box mdl-align"><form id="coursesearch" action="https://moodle.unizar.es/add/course/search.php" method="get"><fieldset class="coursesearchbox invisiblefieldset"><label for="shortsearchbox">Buscar cursos: </label><input type="text" id="shortsearchbox" size="12" name="search" value="" /><input type="submit" value="Ir" /></fieldset></form></div><br /></div></section></div><aside id="block-region-side-pre" class="span3 desktop-first-column block-region" data-blockregion="side-pre" data-droptarget="1"><div id="inst1249" class="block_html block" role="complementary" data-block="html" data-instanceid="1249" aria-label="HTML"><div class="content"><div class="block_action notitle"></div><div class="no-overflow"><h4><strong>Acceso con</strong></h4>
+<h4><strong>NIP y contraseña administrativa.</strong></h4>
+<p></p></div></div></div><a class="skip skip-block" id="fsb-2" href="#sb-2">Saltar Entrar</a><div id="inst10" class="block_login block" role="complementary" data-block="login" data-instanceid="10" aria-labelledby="instance-10-header" data-dockable="1"><div class="header"><div class="title"><div class="block_action"></div><span aria-hidden="true" class="fa fa-user"></span><h2 id="instance-10-header">Entrar</h2></div></div><div class="content">
+<form class="loginform" id="login" method="post" action="https://moodle.unizar.es/add/login/index.php"><div class="form-group"><label for="login_username">Nombre de usuario</label><input type="text" name="username" id="login_username"  class="form-control" value="" autocomplete="username"/></div><div class="form-group"><label for="login_password">Contraseña</label><input type="password" name="password" id="login_password"  class="form-control" value="" autocomplete="current-password"/></div><div class="form-check"><label class="form-check-label"><input type="checkbox" name="rememberusername" id="rememberusername"
+                        class="form-check-input" value="1" /> Recordar nombre de usuario</label></div><div class="form-group"><input type="submit" class="btn btn-primary btn-block" value="Acceder" /></div><input type="hidden" name="logintoken" value="cIHVoz0ONKeXRPsOKt8XnibBnUZSSokj" /></form>
+<div><a href="https://moodle.unizar.es/add/login/forgot_password.php">¿Ha extraviado la contraseña?</a></div></div></div><span class="skip-block-to" id="sb-2"></span><a class="skip skip-block" id="fsb-3" href="#sb-3">Saltar Navegación</a><div id="inst4" class="block_navigation block" role="navigation" data-block="navigation" data-instanceid="4" aria-labelledby="instance-4-header" data-dockable="1"><div class="header"><div class="title"><div class="block_action"></div><span aria-hidden="true" class="fa fa-sitemap"></span><h2 id="instance-4-header">Navegación</h2></div></div><div class="content"><ul class="block_tree list" role="tree" data-ajax-loader="block_navigation/nav_loader"><li class="type_unknown depth_1 contains_branch current_branch" aria-labelledby="label_1_1"><p class="tree_item branch active_tree_node canexpand navigation_node" role="treeitem" aria-expanded="true" aria-owns="random5f8e9358bf15e1_group" data-collapsible="false"><a tabindex="-1" id="label_1_1" href="https://moodle.unizar.es/add/">Página Principal</a></p><ul id="random5f8e9358bf15e1_group" role="group"><li class="type_activity depth_2 item_with_icon" aria-labelledby="label_2_3"><p class="tree_item hasicon" role="treeitem"><a tabindex="-1" id="label_2_3" title="Foro" href="https://moodle.unizar.es/add/mod/forum/view.php?id=1"><img class="icon navicon" alt="Foro" title="Foro" src="https://moodle.unizar.es/add/theme/image.php/essential/forum/1601966169/icon" /><span class="item-content-wrap">Novedades del sitio</span></a></p></li><li class="type_system depth_2 contains_branch" aria-labelledby="label_2_34"><p class="tree_item branch" role="treeitem" id="expandable_branch_0_courses" aria-expanded="false" data-requires-ajax="true" data-loaded="false" data-node-id="expandable_branch_0_courses" data-node-key="courses" data-node-type="0"><a tabindex="-1" id="label_2_34" href="https://moodle.unizar.es/add/course/index.php">Cursos</a></p></li></ul></li></ul></div></div><span class="skip-block-to" id="sb-3"></span><div id="inst1219" class="block_course_summary block no-header" role="complementary" data-block="course_summary" data-instanceid="1219" aria-label="Resumen del Curso/Sitio"><div class="content"><div class="block_action notitle"></div><div class="no-overflow"><div class="text_to_html"><p><a href="http://add.unizar.es">Anillo Digital Docente - p</a>lataforma Moodle de apoyo a la docencia de la Universidad de Zaragoza.</p><p>Es responsabilidad del usuario (en su caso, profesor, alumno del curso o invitado) el uso correcto de los servicios del campus virtual ADD y la obligación de guardar la confidencialidad de las contraseñas de acceso a cada uno de los recursos y plataformas. Para obtener más información sobre la Normativa de uso de los recursos informáticos y Servicios de red y las condiciones de uso del Anillo Digital Docente pulse <a href="http://add.unizar.es/add/campusvirtual/condiciones-de-uso">aquí</a>.</p></div></div></div></div><a class="skip skip-block" id="fsb-6" href="#sb-6">Saltar Calendario</a><div id="inst3" class="block_calendar_month block" role="complementary" data-block="calendar_month" data-instanceid="3" aria-labelledby="instance-3-header" data-dockable="1"><div class="header"><div class="title"><div class="block_action"></div><span aria-hidden="true" class="fa fa-calendar"></span><h2 id="instance-3-header">Calendario</h2></div></div><div class="content"><div id="calendar-month-2020-October-5f8e9358d6b005f8e9358bf15e3"  data-template="core_calendar/month_mini"  data-includenavigation="false" data-mini="true">
+    <div id="month-mini-2020-October-5f8e9358d6b005f8e9358bf15e3" class="calendarwrapper" data-courseid="1" data-categoryid="0" data-month="10" data-year="2020" data-view="month">
+        <span class="overlay-icon-container hidden" data-region="overlay-icon-container">
+            <span class="loading-icon"><i class="icon fa fa-circle-o-notch fa-spin fa-fw "  title="Cargando" aria-label="Cargando"></i></span>
+        </span>
+        <table class="minicalendar calendartable">
+            <caption class="calendar-controls">
+                    <h3>
+                        <a href="https://moodle.unizar.es/add/calendar/view.php?view=month&time=1603179352" title="Este mes">October 2020</a>
+                    </h3>
+            </caption>
+            <thead>
+              <tr>
+                    <th class="header text-xs-center" scope="col">
+                        <abbr title="Lunes">Lun</abbr>
+                    </th>
+                    <th class="header text-xs-center" scope="col">
+                        <abbr title="Martes">Mar</abbr>
+                    </th>
+                    <th class="header text-xs-center" scope="col">
+                        <abbr title="Miércoles">Mié</abbr>
+                    </th>
+                    <th class="header text-xs-center" scope="col">
+                        <abbr title="Jueves">Jue</abbr>
+                    </th>
+                    <th class="header text-xs-center" scope="col">
+                        <abbr title="Viernes">Vie</abbr>
+                    </th>
+                    <th class="header text-xs-center" scope="col">
+                        <abbr title="Sábado">Sáb</abbr>
+                    </th>
+                    <th class="header text-xs-center" scope="col">
+                        <abbr title="Domingo">Dom</abbr>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-region="month-view-week">
+                        <td class="dayblank">&nbsp;</td>
+                        <td class="dayblank">&nbsp;</td>
+                        <td class="dayblank">&nbsp;</td>
+                        <td class="day text-center" data-day-timestamp="1601503200">
+                                1
+                            </td>
+                        <td class="day text-center" data-day-timestamp="1601589600">
+                                2
+                            </td>
+                        <td class="day text-center weekend" data-day-timestamp="1601676000">
+                                3
+                            </td>
+                        <td class="day text-center weekend" data-day-timestamp="1601762400">
+                                4
+                            </td>
+                </tr>
+                <tr data-region="month-view-week">
+                        <td class="day text-center" data-day-timestamp="1601848800">
+                                5
+                            </td>
+                        <td class="day text-center" data-day-timestamp="1601935200">
+                                6
+                            </td>
+                        <td class="day text-center" data-day-timestamp="1602021600">
+                                7
+                            </td>
+                        <td class="day text-center" data-day-timestamp="1602108000">
+                                8
+                            </td>
+                        <td class="day text-center" data-day-timestamp="1602194400">
+                                9
+                            </td>
+                        <td class="day text-center weekend" data-day-timestamp="1602280800">
+                                10
+                            </td>
+                        <td class="day text-center weekend" data-day-timestamp="1602367200">
+                                11
+                            </td>
+                </tr>
+                <tr data-region="month-view-week">
+                        <td class="day text-center" data-day-timestamp="1602453600">
+                                12
+                            </td>
+                        <td class="day text-center" data-day-timestamp="1602540000">
+                                13
+                            </td>
+                        <td class="day text-center" data-day-timestamp="1602626400">
+                                14
+                            </td>
+                        <td class="day text-center" data-day-timestamp="1602712800">
+                                15
+                            </td>
+                        <td class="day text-center" data-day-timestamp="1602799200">
+                                16
+                            </td>
+                        <td class="day text-center weekend" data-day-timestamp="1602885600">
+                                17
+                            </td>
+                        <td class="day text-center weekend" data-day-timestamp="1602972000">
+                                18
+                            </td>
+                </tr>
+                <tr data-region="month-view-week">
+                        <td class="day text-center" data-day-timestamp="1603058400">
+                                19
+                            </td>
+                        <td class="day text-center today" data-day-timestamp="1603144800">
+                                    <a  href="https://moodle.unizar.es/add/calendar/view.php?view=day&amp;time=1603144800" id="calendar-day-popover-link-1-2020-293-5f8e9358d6b005f8e9358bf15e3" data-container="body" data-toggle="popover" data-html="true" data-trigger="hover" data-placement="top" data-title="Hoy Tuesday, 20 October" data-alternate="No hay eventos">20</a>
+    <div class="hidden">
+        
+    </div>
+                            </td>
+                        <td class="day text-center" data-day-timestamp="1603231200">
+                                21
+                            </td>
+                        <td class="day text-center" data-day-timestamp="1603317600">
+                                22
+                            </td>
+                        <td class="day text-center" data-day-timestamp="1603404000">
+                                23
+                            </td>
+                        <td class="day text-center weekend" data-day-timestamp="1603490400">
+                                24
+                            </td>
+                        <td class="day text-center weekend" data-day-timestamp="1603576800">
+                                25
+                            </td>
+                </tr>
+                <tr data-region="month-view-week">
+                        <td class="day text-center" data-day-timestamp="1603666800">
+                                26
+                            </td>
+                        <td class="day text-center" data-day-timestamp="1603753200">
+                                27
+                            </td>
+                        <td class="day text-center" data-day-timestamp="1603839600">
+                                28
+                            </td>
+                        <td class="day text-center" data-day-timestamp="1603926000">
+                                29
+                            </td>
+                        <td class="day text-center" data-day-timestamp="1604012400">
+                                30
+                            </td>
+                        <td class="day text-center weekend" data-day-timestamp="1604098800">
+                                31
+                            </td>
+                        <td class="dayblank">&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div></div></div><span class="skip-block-to" id="sb-6"></span></aside>            </section>
+        </div>
+
+        <!-- End Main Regions -->
+
+        
+    </section>
+</div>
+
+    <footer role="contentinfo" id="page-footer">
+        <div class="container-fluid">
+                        <div class="row-fluid footerblocks">
+                <div class="footerblock span4">
+                                    </div>
+                <div class="footerblock span4">
+                                    </div>
+                <div class="footerblock span4">
+                                    </div>
+            </div>
+            <div class="row-fluid">
+                <div class="tool_usertours-resettourcontainer span12"></div>
+            </div>
+            <div class="footerlinks row-fluid">
+                <hr/>
+                <span class="helplink"></span>
+                                    <span class="copy">&copy;2020 Universidad de Zaragoza, autores y colaboradores</span>
+                                            </div>
+            <div class="footerperformance row-fluid">
+                <div class="tool_dataprivacy"><a href="https://moodle.unizar.es/add/admin/tool/dataprivacy/summary.php">Resumen de conservación de datos</a></div><a href="https://download.moodle.org/mobile?version=2018051714&amp;lang=es&amp;iosappid=633359593&amp;androidappid=com.moodle.moodlemobile">Descargar la app para dispositivos móviles</a><div class="container-fluid performanceinfo"><div class="row-fluid"><div class="span12"><h2>Información de rendimiento</h2></div></div><div class="row-fluid"><div class="span3"><var id="load"><span aria-hidden="true" class="fa fa-clock-o"></span>0.18 segundos</var><span>Tiempo de carga</span></div><div class="span3"><var id="memory"><span aria-hidden="true" class="fa fa-tachometer"></span>10.8MB</var><span>Memoria usada</span></div><div class="span3"><var id="included"><span aria-hidden="true" class="fa fa-stackoverflow"></span>329</var><span>Files Included</span></div><div class="span3"><var id="dbqueries"><span aria-hidden="true" class="fa fa-trello"></span>23/1</var><span>BD Lectura/Escritura</span></div></div></div></div>            </div>
+        </div>
+    </footer>
+    <a href="#top" class="back-to-top" aria-label="Volver arriba">
+        <span aria-hidden="true" class="fa fa-angle-up "></span></a>
+
+<script src="//moodle.unizar.es/js/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#252e39"
+    },
+    "button": {
+      "background": "#14a7d0"
+    }
+  },
+  "position": "top",
+  "content": {
+    "message": "Este sitio utiliza cookies para mejorar su experiencia de uso. Si sigue navegando por este sitio entenderemos que acepta el uso de cookies y  nuestra política de protección de datos de caracter personal.",
+    "dismiss": "Entendido",
+    "link": "Más información",
+    "href": "https://moodle.unizar.es/ADD_condiciones_de_uso.html#datospersonales"
+  },
+  'cookie' :{
+    'expiryDays':90
+  },
+  dismissOnTimeout : 15000,
+  dismissOnScroll : 20
+
+})});
+</script><script type="text/javascript">
+//<![CDATA[
+var require = {
+    baseUrl : 'https://moodle.unizar.es/add/lib/requirejs.php/1601966169/',
+    // We only support AMD modules with an explicit define() statement.
+    enforceDefine: true,
+    skipDataMain: true,
+    waitSeconds : 0,
+
+    paths: {
+        jquery: 'https://moodle.unizar.es/add/lib/javascript.php/1601966169/lib/jquery/jquery-3.2.1.min',
+        jqueryui: 'https://moodle.unizar.es/add/lib/javascript.php/1601966169/lib/jquery/ui-1.12.1/jquery-ui.min',
+        jqueryprivate: 'https://moodle.unizar.es/add/lib/javascript.php/1601966169/lib/requirejs/jquery-private'
+    },
+
+    // Custom jquery config map.
+    map: {
+      // '*' means all modules will get 'jqueryprivate'
+      // for their 'jquery' dependency.
+      '*': { jquery: 'jqueryprivate' },
+      // Stub module for 'process'. This is a workaround for a bug in MathJax (see MDL-60458).
+      '*': { process: 'core/first' },
+
+      // 'jquery-private' wants the real jQuery module
+      // though. If this line was not here, there would
+      // be an unresolvable cyclic dependency.
+      jqueryprivate: { jquery: 'jquery' }
+    }
+};
+
+//]]>
+</script>
+<script type="text/javascript" src="https://moodle.unizar.es/add/lib/javascript.php/1601966169/lib/requirejs/require.min.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+M.util.js_pending("core/first");require(['core/first'], function() {
+;
+require(["media_videojs/loader"], function(loader) {
+    loader.setUp(function(videojs) {
+        videojs.options.flash.swf = "https://moodle.unizar.es/add/media/player/videojs/videojs/video-js.swf";
+videojs.addLanguage("es",{
+ "Play": "Reproducción",
+ "Play Video": "Reproducción Vídeo",
+ "Pause": "Pausa",
+ "Current Time": "Tiempo reproducido",
+ "Duration Time": "Duración total",
+ "Remaining Time": "Tiempo restante",
+ "Stream Type": "Tipo de secuencia",
+ "LIVE": "DIRECTO",
+ "Loaded": "Cargado",
+ "Progress": "Progreso",
+ "Fullscreen": "Pantalla completa",
+ "Non-Fullscreen": "Pantalla no completa",
+ "Mute": "Silenciar",
+ "Unmute": "No silenciado",
+ "Playback Rate": "Velocidad de reproducción",
+ "Subtitles": "Subtítulos",
+ "subtitles off": "Subtítulos desactivados",
+ "Captions": "Subtítulos especiales",
+ "captions off": "Subtítulos especiales desactivados",
+ "Chapters": "Capítulos",
+ "You aborted the media playback": "Ha interrumpido la reproducción del vídeo.",
+ "A network error caused the media download to fail part-way.": "Un error de red ha interrumpido la descarga del vídeo.",
+ "The media could not be loaded, either because the server or network failed or because the format is not supported.": "No se ha podido cargar el vídeo debido a un fallo de red o del servidor o porque el formato es incompatible.",
+ "The media playback was aborted due to a corruption problem or because the media used features your browser did not support.": "La reproducción de vídeo se ha interrumpido por un problema de corrupción de datos o porque el vídeo precisa funciones que su navegador no ofrece.",
+ "No compatible source was found for this media.": "No se ha encontrado ninguna fuente compatible con este vídeo."
+});
+
+    });
+});;
+M.util.js_pending('theme_essential/header');
+require(['theme_essential/header'], function(amd) {
+    amd.init();
+    M.util.js_complete('theme_essential/header');
+});;
+M.util.js_pending('theme_essential/footer');
+require(['theme_essential/footer'], function(amd) {
+    amd.init();
+    M.util.js_complete('theme_essential/footer');
+});;
+M.util.js_pending('theme_essential/navbar');
+require(['theme_essential/navbar'], function(amd) {
+    amd.init({"oldnavbar":false});
+    M.util.js_complete('theme_essential/navbar');
+});;
+M.util.js_pending('theme_essential/jBreadCrumb');
+require(['theme_essential/jBreadCrumb'], function(amd) {
+    amd.init();
+    M.util.js_complete('theme_essential/jBreadCrumb');
+});;
+M.util.js_pending('theme_essential/fitvids');
+require(['theme_essential/fitvids'], function(amd) {
+    amd.init();
+    M.util.js_complete('theme_essential/fitvids');
+});;
+M.util.js_pending('block_navigation/navblock');
+require(['block_navigation/navblock'], function(amd) {
+    amd.init("4");
+    M.util.js_complete('block_navigation/navblock');
+});;
+M.util.js_pending('block_settings/settingsblock');
+require(['block_settings/settingsblock'], function(amd) {
+    amd.init("5", null);
+    M.util.js_complete('block_settings/settingsblock');
+});;
+
+require(['jquery', 'theme_bootstrapbase/bootstrap'], function($) {
+    require(['theme_bootstrapbase/bootstrap'], function() {
+        var target = $("#calendar-day-popover-link-1-2020-293-5f8e9358d6b005f8e9358bf15e3");
+        target.popover({
+            content: function() {
+                var source = target.next().find("> *:not('.hidden')");
+                var content = $('<div>');
+
+                if (source.length) {
+                    content.html(source.clone(false));
+                } else {
+                    content.html(target.data('alternate'));
+                }
+
+                return content.html();
+            }
+        });
+    });
+});
+;
+
+require([
+    'jquery',
+    'core_calendar/selectors',
+    'core_calendar/events',
+], function(
+    $,
+    CalendarSelectors,
+    CalendarEvents
+) {
+
+    $('body').on(CalendarEvents.filterChanged, function(e, data) {
+        M.util.js_pending("month-mini-5f8e9358d6b005f8e9358bf15e3-filterChanged");
+        // A filter value has been changed.
+        // Find all matching cells in the popover data, and hide them.
+        $("#month-mini-2020-October-5f8e9358d6b005f8e9358bf15e3")
+            .find(CalendarSelectors.popoverType[data.type])
+            .toggleClass('hidden', !!data.hidden);
+        M.util.js_complete("month-mini-5f8e9358d6b005f8e9358bf15e3-filterChanged");
+    });
+});
+;
+
+require(['jquery', 'core_calendar/calendar_mini'], function($, CalendarMini) {
+    CalendarMini.init($("#calendar-month-2020-October-5f8e9358d6b005f8e9358bf15e3"), !1);
+});
+;
+
+require(['core/yui'], function(Y) {
+    M.util.init_skiplink(Y);
+});
+;
+M.util.js_pending('core/log');
+require(['core/log'], function(amd) {
+    amd.setConfig({"level":"warn"});
+    M.util.js_complete('core/log');
+});M.util.js_complete("core/first");
+});
+//]]>
+</script>
+<script type="text/javascript" src="https://moodle.unizar.es/add/theme/javascript.php/essential/1601966169/footer"></script>
+<script type="text/javascript">
+//<![CDATA[
+M.str = {"moodle":{"lastmodified":"\u00daltima modificaci\u00f3n","name":"Nombre","error":"Error","info":"Informaci\u00f3n","yes":"S\u00ed","no":"No","ok":"OK","viewallcourses":"Ver todos los cursos","cancel":"Cancelar","morehelp":"M\u00e1s ayuda","loadinghelp":"Cargando...","confirm":"Confirmar","areyousure":"\u00bfEst\u00e1 seguro?","closebuttontitle":"Cerrar","unknownerror":"Error desconocido"},"repository":{"type":"Tipo","size":"Tama\u00f1o","invalidjson":"Cadena JSON no v\u00e1lida","nofilesattached":"No se han adjuntado archivos","filepicker":"Selector de archivos","logout":"Salir","nofilesavailable":"No hay archivos disponibles","norepositoriesavailable":"Lo sentimos, ninguno de sus repositorios actuales puede devolver archivos en el formato solicitado.","fileexistsdialogheader":"El archivo existe","fileexistsdialog_editor":"Un archivo con el mismo nombre ya se ha adjuntado al texto que est\u00e1 editando.","fileexistsdialog_filemanager":"Un archivo con ese nombre ya ha sido adjuntado","renameto":"Cambiar el nombre a \"{$a}\"","referencesexist":"Existen {$a} archivos de alias\/atajos que emplean este archivo como su or\u00edgen","select":"Seleccionar"},"admin":{"confirmdeletecomments":"Est\u00e1 a punto de eliminar comentarios, \u00bfest\u00e1 seguro?","confirmation":"Confirmaci\u00f3n"},"block":{"addtodock":"Minimizar en la barra lateral","undockitem":"Desacoplar este \u00edtem","dockblock":"Acoplar bloque {$a}","undockblock":"Desacoplar bloque {$a}","undockall":"Desacoplar todo","hidedockpanel":"Esconder el panel desacoplado","hidepanel":"Esconder panel"},"langconfig":{"thisdirectionvertical":"btt"}};
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+(function() {Y.use("moodle-core-dock-loader",function() {M.core.dock.loader.initLoader();
+});
+Y.use("moodle-filter_mathjaxloader-loader",function() {M.filter_mathjaxloader.configure({"mathjaxconfig":"\nMathJax.Hub.Config({\n    config: [\"Accessible.js\", \"Safe.js\"],\n    errorSettings: { message: [\"!\"] },\n    skipStartupTypeset: true,\n    messageStyle: \"none\"\n});\n","lang":"es"});
+});
+Y.use("moodle-filter_glossary-autolinker",function() {M.filter_glossary.init_filter_autolinking({"courseid":0});
+});
+M.util.help_popups.setup(Y);
+Y.use("moodle-core-popuphelp",function() {M.core.init_popuphelp();
+});
+M.util.init_block_hider(Y, {"id":"inst10","title":"Entrar","preference":"block10hidden","tooltipVisible":"Ocultar bloque Entrar","tooltipHidden":"Mostrar bloque Entrar"});
+M.util.init_block_hider(Y, {"id":"inst4","title":"Navegaci\u00f3n","preference":"block4hidden","tooltipVisible":"Ocultar bloque Navegaci\u00f3n","tooltipHidden":"Mostrar bloque Navegaci\u00f3n"});
+M.util.init_block_hider(Y, {"id":"inst3","title":"Calendario","preference":"block3hidden","tooltipVisible":"Ocultar bloque Calendario","tooltipHidden":"Mostrar bloque Calendario"});
+ M.util.js_pending('random5f8e9358bf15e8'); Y.on('domready', function() { M.util.js_complete("init");  M.util.js_complete('random5f8e9358bf15e8'); });
+})();
+//]]>
+</script>
+
+</body>
+</html>
+<!-- Essential theme version: 2018051906 is developed by Gareth J Barnard: about.me/gjbarnard -->
