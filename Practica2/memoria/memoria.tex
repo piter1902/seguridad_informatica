@@ -6,7 +6,7 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{listings}
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 \lstset{ frame = single}
 
 \begin{document}
@@ -29,7 +29,7 @@
 \section{Tarea 1: Crear CA}
 
 Se va a proceder a crear una \emph{CA (Certification Authority)}. Para ello se va a crear un certificado y se va a firmar por nosotros mismos. Para esta tarea, se utilizará la herramienta \texttt{openssl}.\\
-Lo primero será obtener una copia del fichero de configuración de \texttt{openssl} disponible en \texttt{/ust/lib/ssl/openssl.cnf}. Se va a modificar el fichero de configuración de tal forma que la variable \texttt{dir} almacene el valor \texttt{./ourCA}.\\
+Lo primero será obtener una copia del fichero de configuración de \texttt{openssl} disponible en \texttt{/usr/lib/ssl/openssl.cnf}. Se va a modificar el fichero de configuración de tal forma que la variable \texttt{dir} almacene el valor \texttt{./ourCA}.\\
 Tras la modificación se van a crear los subdirectorios \texttt{certs, crl\_{}dir, new\_{}certs\_{}dir} y los ficheros \texttt{database} y \texttt{serial}.\\
 
 Ahora se podrá crear el \emph{certificado auto-firmado} para la \emph{CA}. Para ello se ejecutará el comando:
@@ -68,7 +68,7 @@ openssl ca -in server.csr -out server.crt -cert ca.crt \
 
 Ahora el fichero \emph{server.crt} contendrá el certificado firmado por nuestra \emph{CA} que demuestra su identidad frente a la entidad certificadora.
 
-
+\newpage
 \section{Tarea 3: Implementación de certificados en un servidor web \emph{HTTPS}}
 
 Tras la generación del certificado para el servidor \emph{seginfo.es} se va a proceder a implementar el certificado con un servidor web \emph{HTTPS}. Para este paso se va a realizar una modificación sobre el \emph{DNS} de la máquina para acceder al servidor web de \emph{seginfo.es} (ubicado en la propia máquina). Para ello se modificará el fichero \texttt{/etc/hosts} y se añadirá el siguiente contenido:
@@ -105,7 +105,7 @@ Si se accede al servidor web utilizando el navegador de la máquina \emph{host}.
 \end{figure}
 \newpage
 
-Si se intenta acceder utilizando \emph{curl} se obtendrá un error por conexión no segura ya que se desconoce el proveedor del certificado.\\
+Si se intenta acceder utilizando \emph{curl} se obtendrá un error por conexión no segura ya que se desconoce el proveedor del certificado (Figura \ref{fig:tarea3_fallo_curl}).\\
  
 \begin{figure}[h!]
 	\centering
@@ -115,7 +115,6 @@ Si se intenta acceder utilizando \emph{curl} se obtendrá un error por conexión
 \end{figure}
 
 Para conseguir que \emph{curl} acepte la veracidad del servidor \emph{seginfo.es} se debe añadir un argumento a la llamada:\\
-
 
 \begin{lstlisting}
 curl --cacert ca.crt https://seginfo.es:4433
@@ -131,7 +130,7 @@ Tras esto se observaría que el resultado es el mostrado en la Figura \ref{fig:t
 \end{figure}
 
 
-¿Qué pasaría si modificasemos un solo byte del fichero \emph{server.pem}? Depende. Si se modifica un byte de la zona \emph{Certificate} el servidor no se inicia.\\
+¿Qué pasaría si modificasemos un solo byte del fichero \emph{server.pem}? Depende. Si se modifica un byte de la zona \emph{Certificate} el servidor no se inicia (Figura \ref{fig:tarea3_fallo_inicio_server}).\\
 
 \begin{figure}[h!]
 	\centering
@@ -139,9 +138,10 @@ Tras esto se observaría que el resultado es el mostrado en la Figura \ref{fig:t
 	\caption{Captura de pantalla de fallo de inicio de server}
 	\label{fig:tarea3_fallo_inicio_server}
 \end{figure}
- Si se modifica un byte de la zona \emph{signature-algorithm} el servidor se inicia sin problemas (\textbf{No voy a meter captura, es un poco inutil no? He comprobado y si que se inicia el server}).
+ Si se modifica un byte de la zona \emph{signature-algorithm} el servidor se inicia sin problemas.\\
 
-¿Qué ocurre si nos intentamos conectar mediante \texttt{https://localhost:4433}? Que no podremos conectar ya que el certificado ha sido emitido para \emph{seginfo.es} y no para \emph{localhost}.
+¿Qué ocurre si nos intentamos conectar mediante \texttt{https://localhost:4433}? Que no podremos conectar ya que el certificado ha sido emitido para \emph{seginfo.es} y no para \emph{localhost} (Figura \ref{fig:tarea3_localhost}).\\
+
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.6]{images/tarea4_paso2.png}
@@ -150,10 +150,11 @@ Tras esto se observaría que el resultado es el mostrado en la Figura \ref{fig:t
 \end{figure}
 
 
+\newpage
 \section{Tarea 4: Implementación de certificados en un servidor web \emph{HTTPS} basado en \emph{Apache}}
 
+Para configurar el servidor \textit{Apache}, se deben modificar los ficheros \textit{000-default} (para servicios \textit{HTTP}) y \textit{default-ssl} (servicios \textit{HTTPS}) alojados en el directorio \texttt{/etc/apache2/sites-available}. Se debe de crear una nueva entrada que indique el nombre del servidor y el directorio raíz donde se encuentran los archivos relacionados con el mismo (Figura \ref{fig:tarea4_000default}). \\
 
-Para configurar el servidor \textit{Apache}, se deben modificar los ficheros \textit{000-default} (para servicios \textit{Http}) y \textit{default-ssl} (servicios \textit{Https}) alojados en el directorio \texttt{/etc/apache2/sites-available}. Se debe de crear una nueva entrada que indique el nombre del servidor y la carpeta raíz donde se encuentran los archivos relacionados con el mismo. \\
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.6]{images/tarea4_000default.png}
@@ -161,7 +162,7 @@ Para configurar el servidor \textit{Apache}, se deben modificar los ficheros \te
 	\label{fig:tarea4_000default}
 \end{figure}
 
-Para un sitio web \textit{Https}, se debe añadir un par de campos más relacionados con el certificado.\\
+Para un sitio web \textit{HTTPS}, se debe añadir un par de campos más relacionados con el certificado (Figura \ref{fig:tarea4_defaultssl}).\\
 
 \begin{figure}[h!]
 	\centering
@@ -171,7 +172,8 @@ Para un sitio web \textit{Https}, se debe añadir un par de campos más relacion
 \end{figure}
 
 Posteriormente se debe crear directorio \texttt{/var/www/seginfo.es} y el fichero index.html incorporando el texto que queramos que se vea al acceder al servicio.\\
-A continuación, se deben ejecutar una serie de comandos para habilitar \textit{SSL} y reiniciar el servicio Apache. Al hacerlo, se pide la introducción de la contraseña utilizada para encriptar la clave privada.\\
+A continuación, se deben ejecutar una serie de comandos para habilitar \textit{SSL} y reiniciar el servicio \emph{Apache}. Al hacerlo, se pide la contraseña utilizada para cifrar la clave privada.\\
+
 \begin{lstlisting}
 	// Habilitar modulo SSL
 	$ sudo a2enmod ssl
@@ -183,7 +185,8 @@ A continuación, se deben ejecutar una serie de comandos para habilitar \textit{
 	$ sudo systemctl restart apache2
 \end{lstlisting}
 
-Por último, se ejecuta el comando \texttt{curl --cacert ca.crt https://seginfo.es} para acceder al servicio desde la máquina y se muestra el contenido de \textit{index.html}, como se muestra en la siguiente imagen.\\
+Por último, se ejecuta el comando \texttt{curl --cacert ca.crt https://seginfo.es} para acceder al servicio desde la máquina y se muestra el contenido de \textit{index.html}, como se muestra en la Figura \ref{fig:tarea4_paso3}.\\
+
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.6]{images/tarea4_paso3.png}
@@ -195,7 +198,7 @@ Por último, se ejecuta el comando \texttt{curl --cacert ca.crt https://seginfo.
 \section{Tarea 5: Lanzando un ataque \emph{MITM}}
 
 En este apartado se va a proceder a realizar un ataque \textit{Man in The Middle (MITM)}. Para ello, se ha decidido suplantar la web \url{https://example.com}\\
-Se deben seguir los pasos descritos en los puntos anteriores para poder crear el certificado del sitio a suplantar. Al finalizar se deben obtener los ficheros \texttt{example.csr, example.crt y example.key}.\\
+Se deben seguir los pasos descritos en los puntos anteriores para poder crear el certificado del sitio a suplantar. Al finalizar se deben obtener los ficheros \texttt{example.csr, example.crt y example.key} (Figura \ref{fig:tarea5_paso1}).\\
 
 \begin{figure}[h!]
 	\centering
@@ -203,49 +206,56 @@ Se deben seguir los pasos descritos en los puntos anteriores para poder crear el
 	\caption{Creación de certificado para example.com}
 	\label{fig:tarea5_paso1}
 \end{figure}
-También debe modificarse las entradas \textit{VirtualHost} de \textit{Apache}, indicando como \textit{ServerName} ``example.com''. 
-También se debe crear el directorio \texttt{/var/www/example.com} junto al archivo\textit{index.html}, el cual debe contener el código \textit{Html} del servicio a suplantar. En este caso se ha modificado parte del código para observar que se accede al servicio suplantado.\\
-Para lanzar un MITM hay que modificar el DNS de la víctima para que en vez de acceder al servicio original, acceda a la página suplantada alojada en la máquina virutal. Para ello, se modifica el archivo \texttt{C:/Windows/System32/drivers/etc/hosts} (si la víctima es un servidor en Windows) añadiendo la siguiente entrada: ``\texttt{\_\_IP\_MV\_\_ example.com}''.\\
 
-Si se accede a la página desde un navegador, se obtiene lo siguiente: 
+También debe modificarse las entradas \textit{VirtualHost} de \textit{Apache}, indicando como \textit{ServerName} \emph{``example.com''}. 
+También se debe crear el directorio \texttt{/var/www/example.com} junto al archivo \textit{index.html}, el cual debe contener el código \textit{HTML} del servicio a suplantar. En este caso se ha modificado parte del código para observar que se accede al servicio suplantado.\\
+Para lanzar un \emph{MITM} hay que modificar el \emph{DNS} de la víctima para que en vez de acceder al servicio original, acceda a la página suplantada alojada en la máquina virtual. Para ello, se modifica el archivo \texttt{C:/Windows/System32/drivers/etc/hosts} (si la víctima es un servidor con Sistema Operativo \emph{Windows}) añadiendo la siguiente entrada: ``\texttt{\_\_IP\_MV\_\_ example.com}''.\\
+
+Si se accede a la página desde un navegador, se obtiene lo mostrado en la Figura \ref{fig:Tarea5_paso3}.\\
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.5]{images/Tarea5_paso3.png}
-	\caption{Acceso a \textit{example.com } sin certificado}
+	\caption{Acceso a \textit{example.com} sin certificado}
 	\label{fig:Tarea5_paso3}
 \end{figure}
 
 Se puede observar que el navegador indica que la conexión no es segura ya que se desconoce el certificado del emisor.\\
 
-Para obtener una conexión segura, se debe añadir el certificado ca.crt al navegador (en este caso Firefox).\\
+Para obtener una conexión segura, se debe añadir el certificado \texttt{ca.crt} al navegador (en este caso \emph{Firefox}) (Figura \ref{fig:Tarea5_paso4a}).\\
+
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.6]{images/Tarea5_paso4a.png}
-	\caption{Adición de certificado a Firefox}
+	\caption{Adición de certificado a \emph{Firefox}}
 	\label{fig:Tarea5_paso4a}
 \end{figure}
 
-Tras añadir el certificado, se vuelve a acceder a la página y esta vez no se muestra el aviso de ``conexión no segura''\\
+\newpage
+Tras añadir el certificado, se vuelve a acceder a la página y esta vez no se muestra el aviso de ``conexión no segura'' (Figura \ref{fig:Tarea5_paso4b}).\\
+
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.5]{images/Tarea5_paso4b.png}
-	\caption{Acceso a \textit{example.com } con certificado}
+	\caption{Acceso a \textit{example.com} con certificado}
 	\label{fig:Tarea5_paso4b}
 \end{figure}
 
 
 \section{Tarea 6: Lanzando un ataque \emph{MITM} con una CA comprometida}
 
-En este apartado, se supone un escenario en el que un atacante ha obtenido la clave privada de nuestra CA y puede crear cualquier certificado a partir de esta clave. \\
-Siguiendo el escenario anterior, la víctima que había añadido el certificado a su navegador está expuesta a un ataque \textit{MITM}, ya que basta con crear un nuevo certificado para un servicio \textit{HTTPS} y realizar un ataque DNS para redirigir al servicio suplantado. De esta manera, el navegador confiaría en la página sin mostrar ninguna advertencia. \\
-Se procede a realizar un nuevo ataque \textit{MITM} con una nueva página, \url{https://www.pcbox.com}. Para ello, se siguen los pasos descritos en puntos anteriores (creación de certificado, nuevo servicio en Apache y ``ataque'' DNS). \par
-Si la víctima accede a esta web, se le redirigirá al servicio suplantado y el navegador no informará de ningún riesgo, tal y como se muestra en la siguiente imagen. 
+En este apartado, se supone un escenario en el que un atacante ha obtenido la clave privada de nuestra \emph{CA} y puede crear cualquier certificado a partir de esta clave.\\
+
+Siguiendo el escenario anterior, la víctima que había añadido el certificado a su navegador está expuesta a un ataque \textit{MITM}, ya que basta con crear un nuevo certificado para un servicio \textit{HTTPS} y realizar un ataque \emph{DNS} para redirigir al servicio suplantado. De esta manera, el navegador confiaría en la página sin mostrar ninguna advertencia.\\
+
+Se procede a realizar un nuevo ataque \textit{MITM} con una nueva página, \url{https://www.pcbox.com}. Para ello, se siguen los pasos descritos en puntos anteriores (creación de certificado, nuevo servicio en \emph{Apache} y ``ataque'' \emph{DNS}). \\
+
+Si la víctima accede a este sitio web, se le redirigirá al servicio suplantado y el navegador no informará de ningún riesgo, tal y como se muestra en la Figura \ref{fig:Tarea6}.\\
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[scale=0.6]{images/Tarea6.png}
-	\caption{Acceso a \textit{pcbox.com } falso}
+	\includegraphics[scale=0.5]{images/Tarea6.png}
+	\caption{Acceso a \textit{www.pcbox.com} falso}
 	\label{fig:Tarea6}
 \end{figure}
 
