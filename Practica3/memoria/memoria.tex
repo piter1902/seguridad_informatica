@@ -10,7 +10,7 @@
 \usepackage[hidelinks]{hyperref}
 
 % Frame over lstlisting
-\lstset { frame = single }
+\lstset { frame = single, breaklines = true }
 
 
 \begin{document}
@@ -112,60 +112,74 @@ allow user_t su_exec_t:file {read execute getaddr};
 \label{fig:parte2_11}
 \end{figure}
 
+
 \section{Parte 3: Listas de Control de Accesos (\emph{ACLs}) basados en estándar \emph{POSIX} de \emph{Unix} del modelo \emph{DAC}}
-En este apartado se procede a crear un fichero ``\textit{home}'' con el usuario \textit{u} y añadir mediante el comando \textit{setfacl} permisos de lectura y ejecución al usuario \textit{c} y de lectura al grupo \textit{c}. \par
+
+En este apartado se procede a crear un fichero \textit{``home''} con el usuario \textit{u} y añadir mediante el comando \textit{setfacl} permisos de lectura y ejecución al usuario \textit{c} y de lectura al grupo \textit{c}. \\
+
 Para ello, se debe ejecutar el siguiente comando: 
+
 \begin{lstlisting}
 	setfacl -m u:c:rx -m g:c:r <fichero>
 \end{lstlisting}
-Con la opción ``-m'' se indican que se van a modificar los permisos del fichero indicado. Estos permisos se deben indicar de la siguiente forma: \texttt{[usuario(u)|grupo(g)]:[user|grupo destino]:[permisos]}. \par
+
+Con la opción \texttt{``-m''} se indican que se van a modificar los permisos del fichero indicado. Estos permisos se deben indicar de la siguiente forma: \texttt{[usuario(u)|grupo(g)]:[user|grupo destino]:[permisos]}. \\
+
 Con el comando \textit{getfacl} se muestran los permisos del fichero indicado. Si se ejecuta el comando antes de modificar los permisos, se muestra lo siguiente:
+
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.7]{images/parte3_13a.png}
-	\caption{Captura de pantalla de la salida del comando \texttt{getfacl file\_c.txt} antes de modificar los permisos}
+	\caption{Captura de pantalla de la salida del comando \texttt{getfacl file\_c.txt} antes de modificar los permisos.}
 	\label{fig:parte3_13a}
-\end{figure}\\
+\end{figure}
 
 Como se puede observar, solo tiene permisos de lectura y escritura el usuario \textit{u} y el grupo \textit{u}.
 Sin embargo, tras modificar los permisos con \textit{setfacl}, el comando \textit{getfacl} muestra lo siguiente:
+
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.7]{images/parte3_13b.png}
-	\caption{Captura de pantalla de la salida del comando \texttt{getfacl file\_c.txt} tras modificar permisos}
+	\caption{Captura de pantalla de la salida del comando \texttt{getfacl file\_c.txt} tras modificar permisos.}
 	\label{fig:parte3_13b}
-\end{figure}\\
+\end{figure}
+
 Se indica que, ademas del usuario \textit{u}, ahora tiene permisos de lectura y ejecución el usuario \textit{c} y de lectura el grupo \textit{c}.\\
 Lo contenido en \textit{mask} indica la unión de los permisos de todos los grupos y usuarios que tienen acceso. 
 
 \newpage
 \section{Parte 4: Reglas de control de accesos y acceso a dominios}
+
 Para poder obtener los dominios a los que se les permite acceder a ficheros de tipo \textit{shadow\_t} y clase \textit{file} con permisos de escritura, se debe ejecutar el siguiente comando: 
+
 \begin{lstlisting}
-	sesearch -A -t shadow\_t -c file -p write
+	sesearch -A -t shadow_t -c file -p write
 \end{lstlisting}
 La ejecución del comando anterior muestra lo siguiente: 
+
 \begin{figure}[h!]
 	\centering
-	\includegraphics[scale=0.7]{images/parte4_15.png}
-	\caption{Captura de pantalla de la salida del comando \texttt{sesearch -A -t shadow\_t -c file -p write}}
+	\includegraphics[scale=0.5]{images/parte4_15.png}
+	\caption{Captura de pantalla de la salida del comando \texttt{sesearch -A -t shadow\_t -c file -p write}.}
 	\label{fig:parte4_15}
-\end{figure}\\
+\end{figure}
 
-Esto nos indica que todos los procesos que pertenecen a los dominios que devuelve el comando (aparecen seguidos de \textit{allow}) tienen permiso de escritura sobre archivos que pertenecen a la clase \textit{file} del dominio o tipo \textit{shadow\_t}. La clase \textit{file} indica que es un fichero regular. \\
+Esto nos indica que todos los procesos que pertenecen a los dominios que devuelve el comando (aparecen seguidos de \textit{allow}) tienen permiso de escritura sobre archivos que pertenecen a la clase \textit{file} del dominio o tipo \textit{shadow\_t}. La clase \textit{file} indica que es un fichero regular.\\
 
 Para obtener todos los permisos de rol al que pertenece el usuario \textit{c}, es decir, \textit{user\_r}, se debe ejecutar el siguiente comando: 
 \begin{lstlisting}
 	seinfo -ruser_r -x
 \end{lstlisting}  
 
-Su ejecución devuelve lo siguiente (solo muestra una parte de la devolución): 
+Su ejecución devuelve lo siguiente (solo se muestra una parte de la devolución): 
+
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.7]{images/parte4_16.png}
 	\caption{Captura de pantalla de la salida del comando \texttt{seinfo -ruser\_r -x}}
 	\label{fig:parte4_16}
-\end{figure}\\
+\end{figure}
 
-Con ello se observa que todo usuario cuyo rol sea \textit{user\_r} tiene acceso a todos esos tipos y dominios. Para que pueda tener acceso debe haberse establecido una regla de política de \textit{SElinux} que lo permita. 
+Con ello se observa que todo usuario cuyo rol sea \textit{user\_r} tiene acceso a todos esos tipos y dominios. Para que pueda tener acceso debe haberse establecido una regla de política de \textit{SElinux} que lo permita.
+
 \end{document}
