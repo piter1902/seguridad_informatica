@@ -1,0 +1,74 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{listings}
+
+\lstset { frame = single, breaklines = true }
+
+
+\begin{document}
+
+\begin{titlepage}
+\title{\textbf{Seguridad 4}}
+\author{
+	Pedro Allué Tamargo (758267)
+	\and
+	Juan José Tambo Tambo (755742)
+}
+\date{\today}
+\clearpage\maketitle
+\thispagestyle{empty}
+\tableofcontents
+\end{titlepage}
+
+\section{Identificación de vulnerabilidades}
+
+\subsection{Hay una vulnerabilidad asociada a una variable que puede ser indexada fuera de su límite}
+\begin{itemize}
+\item ¿Cuál es la variable?
+	\begin{itemize}
+	\item La variable es \texttt{func}. Esta variable almacena un \emph{array} de punteros a funciones que devuelven \texttt{void} y no aceptan parámetros.
+	\item Ejecutando el programa sin las contramedidas, cuando pide la introducción de una opción del menú, se introduce la opción 6 y se indexa el \emph{array} \texttt{funcsec}, declarado en direcciones contiguas.
+	\end{itemize}
+\item Indicar la línea de código que puede indexar la variable fuera de su límite.
+	\begin{itemize}
+	\item La variable se puede indexar fuera de su límite en la línea 131.
+	\end{itemize}
+\end{itemize}
+
+\subsection{Hay vulnerabilidades de desbordamiento de búfer en el programa}
+\begin{itemize}
+\item ¿Cuáles son las variables?
+\item ¿Qué parte de la memoria asociada al proceso se puede desbordar?
+\item Indicar las líneas de código que pueden desbordar los búferes.
+\end{itemize}
+
+\subsection{¿Hay otros tipos de vulnerabilidades en el código? ¿Cuáles?}
+
+
+\section{Redirección de la ejecución}
+\subsection{¿Cuál es la dirección de las variables \texttt{func} y \texttt{funcsec}? ¿En qué parte de la memoria se encuentran?}
+
+\subsection{¿Cuál es la dirección del método \texttt{showSecret1}?}
+
+\subsection{¿Qué datos de entrada proporcionas al programa para que \texttt{func[s]} lea el puntero a la función guardado en \texttt{funcsec}, en lugar de un puntero a una función guardado en \texttt{func}?}
+
+
+\section{Ejecución del método \texttt{mostrarSecreto2}}
+\subsection{¿Cuál es la dirección del búfer asociado a la variable \texttt{resp}?}
+
+\subsection{¿Qué datos de entrada proporcionas al programa para que \texttt{func[s]} lea a partir del 126º byte en \texttt{resp}, es decir, a partir de \texttt{resp[125]}?}
+
+\subsection{¿Hay otra forma de conseguir la escritura del segundo mensaje secreto por pantalla?}
+
+
+
+
+
+
+\end{document}
