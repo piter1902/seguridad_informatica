@@ -44,12 +44,27 @@
 \subsection{Hay vulnerabilidades de desbordamiento de búfer en el programa}
 \begin{itemize}
 \item ¿Cuáles son las variables?
+	\begin{itemize}
+	%\item La variable \texttt{resp} en la función \texttt{main}. Acepta cadenas de caracteres de hasta 512 \emph{bytes} de longitud. \textbf{(?)}
+	\item La variable \texttt{comida} en la función \texttt{llenarCarrito}. Acepta 512 \emph{bytes} de longitud pero la función \texttt{scanf} no establece un límite para controlar la longitud de la cadena a copiar.
+	\item La variable \texttt{malo} en la función \texttt{mostrarCalorias} utiliza una versión no segura de la función \texttt{strlen} que devuelve el número de bytes (caracteres) entre una dirección de inicio y el carácter terminador \texttt{0}. Si esta longitud es mayor que 512 (\emph{MAX\_{}SIZE}) se copiarán tantos caracteres como diga \texttt{len} o hasta llegar al carácter terminador.
+	\end{itemize}
 \item ¿Qué parte de la memoria asociada al proceso se puede desbordar?
+	\begin{itemize}
+	\item Se podría desbordar la pila. Al ser variables que se declaran en funciones y no son globales se almacenan en la pila.
+	\end{itemize}
 \item Indicar las líneas de código que pueden desbordar los búferes.
+	\begin{itemize}
+%	\item \texttt{resp}: el acceso a los datos de otro \emph{array} (\texttt{funcsec}) en la línea \textbf{nLinea}.
+	\item \texttt{comida}: la función \texttt{scanf} (línea \textbf{nLinea})
+	\item \texttt{malo}: la función \texttt{strlen} (línea \textbf{nLinea}) junto con la función \texttt{strncat}  (línea \textbf{nLinea}).
+	\end{itemize}
 \end{itemize}
 
 \subsection{¿Hay otros tipos de vulnerabilidades en el código? ¿Cuáles?}
-
+\begin{itemize}
+\item \textbf{No tengo ni idea Hulio.}
+\end{itemize}
 
 \section{Redirección de la ejecución}
 \subsection{¿Cuál es la dirección de las variables \texttt{func} y \texttt{funcsec}? ¿En qué parte de la memoria se encuentran?}
@@ -67,6 +82,7 @@
 \subsection{¿Hay otra forma de conseguir la escritura del segundo mensaje secreto por pantalla?}
 
 
+\section{Bola extra ????}
 
 
 
