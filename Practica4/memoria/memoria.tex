@@ -6,6 +6,7 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[hidelinks]{hyperref}
 \usepackage{listings}
 
 \lstset { frame = single, breaklines = true }
@@ -41,6 +42,7 @@
 	\end{itemize}
 \end{itemize}
 
+
 \subsection{Hay vulnerabilidades de desbordamiento de búfer en el programa}
 \begin{itemize}
 \item ¿Cuáles son las variables?
@@ -56,28 +58,59 @@
 \item Indicar las líneas de código que pueden desbordar los búferes.
 	\begin{itemize}
 %	\item \texttt{resp}: el acceso a los datos de otro \emph{array} (\texttt{funcsec}) en la línea \textbf{nLinea}.
-	\item \texttt{comida}: la función \texttt{scanf} (línea \textbf{nLinea})
-	\item \texttt{malo}: la función \texttt{strlen} (línea \textbf{nLinea}) junto con la función \texttt{strncat}  (línea \textbf{nLinea}).
+	\item \texttt{comida}: la función \texttt{scanf} (línea 58)
+	\item \texttt{malo}: la función \texttt{strlen} (línea 86) junto con la función \texttt{strncat}  (línea 87).
 	\end{itemize}
 \end{itemize}
 
+
 \subsection{¿Hay otros tipos de vulnerabilidades en el código? ¿Cuáles?}
 \begin{itemize}
-\item \textbf{No tengo ni idea Hulio.}
+\item \textbf{{\Huge No tengo ni idea Hulio.}}
 \end{itemize}
 
+
 \section{Redirección de la ejecución}
+
 \subsection{¿Cuál es la dirección de las variables \texttt{func} y \texttt{funcsec}? ¿En qué parte de la memoria se encuentran?}
+
+Para obtener la localización de las variables en memoria mediante \texttt{gdb} se utilizará la orden: \texttt{print \&{}variable}. Por lo tanto, las direcciones de las variables serán las siguientes:
+\begin{itemize}
+\item La variable \texttt{func} se encuentra en la dirección \emph{0x804b064}
+\item La variable \texttt{funcsec} se encuentra en la dirección \emph{0x804b078}
+\end{itemize}
+
+Las variables se encuentran en la zona de datos inicializados (\emph{Initialized Data Segment}) ya que son variables globales cuyo valor ha sido otorgado por el programador.
+
 
 \subsection{¿Cuál es la dirección del método \texttt{showSecret1}?}
 
+Para obtener la dirección de la función \texttt{showSecret1} mediante \texttt{gdb} se ha utilizado la siguiente orden: \texttt{print \&{}Carrito::mostrarSecreto1}. Ya que \texttt{mostrarSecreto1} es un método estático de la clase \texttt{Carrito}. Su dirección de memoria es: \emph{0x8048bce}.
+
+
 \subsection{¿Qué datos de entrada proporcionas al programa para que \texttt{func[s]} lea el puntero a la función guardado en \texttt{funcsec}, en lugar de un puntero a una función guardado en \texttt{func}?}
+
+La entrada proporcionada al programa para leer un puntero guardado en \texttt{funcsec} sería de al menos 5. Esto es así ya que la dirección inicial de \texttt{func} es \emph{0x804b064} y almacena punteros, cuyo tamaño son 4 \emph{bytes}. Para leer un puntero de \texttt{funcsec} habría que indexar la quinta posición (empezando por 0) de \texttt{func} (\emph{0x804b064 + (5*size\_{}puntero) = 0x804b078}).
 
 
 \section{Ejecución del método \texttt{mostrarSecreto2}}
+
 \subsection{¿Cuál es la dirección del búfer asociado a la variable \texttt{resp}?}
 
+Para conseguir la dirección de memoria de la variable \texttt{resp} mediante \texttt{gdb} se utilizarán los siguientes comandos. El comando \texttt{backtrace} (\texttt{bt}) servirá para obtener la pila de ejecución (\emph{backtrace}) del programa (Figura \textbf{numFigura}). Tras esto se ejecutará el comando \texttt{frame 9} (\texttt{f 9}). Este comando establecerá el contexto al de la función \texttt{main}. Una vez situados en este contexto se ejecutará \texttt{print \&{}main::resp}. La dirección de memoria asociada a la variable \texttt{resp} será: \emph{0xbffff34f}\\
+
+\textbf{Aqui se mete una figura de la salida de \texttt{bt}}\\
+
+
 \subsection{¿Qué datos de entrada proporcionas al programa para que \texttt{func[s]} lea a partir del 126º byte en \texttt{resp}, es decir, a partir de \texttt{resp[125]}?}
+
+
+Dirección de \texttt{mostrarSecreto2} = \emph{0x8048a054}\\
+Hay que hacer que resp desborde la pila para que el \emph{saved eip} apunte a la función \texttt{mostrarSecreto2}. \\
+
+
+\url{https://stackoverflow.com/questions/5144727/how-to-interpret-gdb-info-frame-output}
+
 
 \subsection{¿Hay otra forma de conseguir la escritura del segundo mensaje secreto por pantalla?}
 
