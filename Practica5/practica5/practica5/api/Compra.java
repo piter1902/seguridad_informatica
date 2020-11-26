@@ -2,7 +2,6 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import java.util.function.Consumer;
 
 public class Compra {
 
@@ -26,12 +25,9 @@ public class Compra {
         // Escribir la lista de productos con sus precios
         String products = Tienda.muestraProductos();
         List<String> listProducts = Arrays.asList(products.split("\n"));
-        listProducts.forEach(new Consumer<String>() {
-            @Override
-            public void accept(String s) {
-                s.trim();
-            }
-        });
+        for (int i = 0; i < listProducts.size(); i++) {
+            listProducts.set(i, listProducts.get(i).trim());
+        }
         System.out.println("Lista de productos: ");
         for (String s : listProducts) {
             System.out.format("%s \t %s euros\n", s, Tienda.obtenerPrecioProducto(s));
