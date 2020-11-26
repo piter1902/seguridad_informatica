@@ -23,15 +23,9 @@ public class Compra {
             e.printStackTrace();
         }
         // Escribir la lista de productos con sus precios
+        System.out.println("Lista de productos:");
         String products = Tienda.muestraProductos();
-        List<String> listProducts = Arrays.asList(products.split("\n"));
-        for (int i = 0; i < listProducts.size(); i++) {
-            listProducts.set(i, listProducts.get(i).trim());
-        }
-        System.out.println("Lista de productos: ");
-        for (String s : listProducts) {
-            System.out.format("%s \t %s euros\n", s, Tienda.obtenerPrecioProducto(s));
-        }
+        System.out.println(products);
         // Pide el producto que se quiere comprar
         Scanner scanner = new Scanner(System.in);
         System.out.println("¿Qué quieres comprar?");
