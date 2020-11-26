@@ -15,7 +15,10 @@
 \begin{document}
 
 \begin{titlepage}
-\title{\textbf{Seguridad 4}}
+\title{\textbf{
+	{\Huge Práctica 4: Vulnerabilidades de desbordamiento}\\
+	{\Large Seguridad Informática}
+}}
 \author{
 	Pedro Allué Tamargo (758267)
 	\and
@@ -66,7 +69,8 @@
 
 \subsection{¿Hay otros tipos de vulnerabilidades en el código? ¿Cuáles?}
 \begin{itemize}
-\item \textbf{{\Huge No tengo ni idea Hulio.}}
+\item Hay una vulnerabilidad de desbordamiento de enteros en la función \texttt{mostrarCalorías}, en la línea 90 (variable \texttt{total}). Dada una lista de comidas lo suficientemente grande, y debido al bucle \texttt{for} de la línea 81 se podría desbordar el valor de esta variable.
+\item Existe otra vulnerabilidad de desbordamiento de enteros relacionada con la elección de la opción del menú del usuario (línea 127) puede desbordar el valor del entero \texttt{s} (función \texttt{atoi}, línea 130) si \texttt{resp} no se puede representar en el rango de los enteros (\texttt{int}). Una solución sería utilizar la función \texttt{strtol} que convierte una cadena de texto a un entero tipo \texttt{long} y ante desbordamientos, devuelve los límites máximos o mínimos del tipo \texttt{long}, dependiendo de por donde ha desbordado.
 \end{itemize}
 
 
@@ -106,7 +110,6 @@ La entrada proporcionada al programa para leer un puntero guardado en \texttt{fu
 
 Para conseguir la dirección de memoria de la variable \texttt{resp} mediante \texttt{gdb} se utilizarán los siguientes comandos. El comando \texttt{backtrace} (\texttt{bt}) servirá para obtener la pila de ejecución (\emph{backtrace}) del programa (Figura \textbf{numFigura}). Tras esto se ejecutará el comando \texttt{frame 9} (\texttt{f 9}). Este comando establecerá el contexto al de la función \texttt{main}. Una vez situados en este contexto se ejecutará \texttt{print \&{}main::resp}. La dirección de memoria asociada a la variable \texttt{resp} será: \emph{0xbffff34f}\\
 
-\textbf{Aqui se mete una figura de la salida de \texttt{bt}}\\
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.8]{images/bt.png}
@@ -117,17 +120,28 @@ Para conseguir la dirección de memoria de la variable \texttt{resp} mediante \t
 
 \subsection{¿Qué datos de entrada proporcionas al programa para que \texttt{func[s]} lea a partir del 126º byte en \texttt{resp}, es decir, a partir de \texttt{resp[125]}?}
 
+Dirección de \texttt{mostrarSecreto2} = \emph{0x08048a54}\\
+Dirección de \texttt{resp} = \emph{0xbffff34f}\\
+Dirección de \texttt{func} = \emph{0x0804b064}\\
+
+YYYYYY = 771674330\\
+Tiene que haber x A's\\
+XE = Dir. mostrarSecreto2\\
+
+Por lo tanto, me cagon dioooooooooos \textbf{completar}\\
+
+
+
+\subsection{¿Hay otra forma de conseguir la escritura del segundo mensaje secreto por pantalla?}
 
 Dirección de \texttt{mostrarSecreto2} = \emph{0x08048a54}\\
 Dirección \texttt{saved eip} = \emph{0xb7d5f775}\\
+Dirección de \texttt{eip} = \emph{0xbffff558}\\
 Entre \emph{resp} y \emph{saved eip} hay 525 \emph{bytes}\\
 Hay que hacer que resp desborde la pila para que el \emph{saved eip} (dirección de retorno) apunte a la dirección de la función \texttt{mostrarSecreto2}. \\
 
 
 \url{https://stackoverflow.com/questions/5144727/how-to-interpret-gdb-info-frame-output}
-
-
-\subsection{¿Hay otra forma de conseguir la escritura del segundo mensaje secreto por pantalla?}
 
 
 \section{Bola extra ????}
