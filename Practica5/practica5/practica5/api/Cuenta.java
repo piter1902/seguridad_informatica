@@ -46,4 +46,13 @@ public class Cuenta {
         this.fp.close();
     }
 
+    /**
+     * Retira de la cuenta la cantidad de dinero indicada 
+     */
+    public void sacarDinero(int cantidad) throws Exception {		
+	int dineroActual = obtenerSaldo();
+	if (dineroActual >= cantidad)
+	   establecerSaldo(dineroActual - cantidad);
+    } 
+
 }
