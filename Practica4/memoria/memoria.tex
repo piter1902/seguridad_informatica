@@ -156,19 +156,28 @@ Por lo tanto para explotar la vulnerabilidad se utilizará la siguiente entrada:
 
 \subsection{¿Hay otra forma de conseguir la escritura del segundo mensaje secreto por pantalla?}
 
-Dirección de \texttt{mostrarSecreto2} = \emph{0x08048a54}\\
-Dirección \texttt{saved eip} = \emph{0xb7d5f775}\\
-Dirección de \texttt{eip} = \emph{0xbffff558}\\
-Entre \emph{resp} y \emph{saved eip} hay 525 \emph{bytes}\\
-Hay que hacer que resp desborde la pila para que el \emph{saved eip} (dirección de retorno) apunte a la dirección de la función \texttt{mostrarSecreto2}. \\
+Otra manera de explotar esta vulnerabilidad se corresponde con la modificación del registro que almacena la dirección de retorno de la función. Modificando este registro para que apunte a la función \texttt{mostrarSecreto2} conseguiremos ejecutarla.\\
+La clave para esto es la utilización de la función \texttt{scanf()} de la función \texttt{llenarCarrito()}. Se va a explotar la función \texttt{scanf()} ya que es una función no segura que permite la escritura más allá del tamaño máximo del \emph{buffer}, en este caso la variable \emph{comida}.\\
+Las direcciones de memoria importantes a tener en cuenta para explotar esta vulnerabilidad son las siguientes:
+\begin{itemize}
+\item Dirección de \texttt{mostrarSecreto2} = \emph{0x08048a54}
+\item Dirección de \texttt{eip\footnote{\url{https://stackoverflow.com/questions/5144727/how-to-interpret-gdb-info-frame-output}}} = \emph{0xbffff32c}
+\item Dirección de \texttt{comida} = \emph{0xbffff0f2}
+\end{itemize}
+
+Por lo tanto para sobrescribir el registro \emph{eip} se deberá hacer que la variable comida desborde. La diferencia entre las direcciones de inicio de las variables es de \emph{570B} y al ser variables de tipo \texttt{char} (1B) implica que son 570 posiciones de memoria. Para explotar esta vulnerabilidad se utilizará una cadena de caracteres de la forma: \emph{AAAAA..AAAXXXX} (Figura \ref{fig:inputSegundoLogroScanf}). En esta cadena existirán 570 caracteres (A) (codificados como espacios en hexadecimal (90)). Las X se corresponden con la dirección de la función \texttt{mostrarSecreto2()} codificado en \emph{little endian} hexadecimal.\\
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.9]{images/segundo_logro_scanf.png}
+\caption{Captura de pantalla de la entrada necesaria para obtener el segundo logro explotando la vulnerabilidad encontrada en la función \texttt{scanf()}}
+\label{fig:inputSegundoLogroScanf}
+\end{figure}
 
 
-\url{https://stackoverflow.com/questions/5144727/how-to-interpret-gdb-info-frame-output}
+\section{Comentar las contramedidas}
 
-
-\section{Bola extra ????}
-
-\textbf{{\Huge Esto no lo hago ni aunque me paguen.}}
+\textbf{{\Huge Esto lo hace JTAMBO99}}
 
 
 
