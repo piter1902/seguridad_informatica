@@ -74,6 +74,7 @@
 \end{itemize}
 
 
+\newpage
 \section{Redirección de la ejecución}
 
 \subsection{¿Cuál es la dirección de las variables \texttt{func} y \texttt{funcsec}? ¿En qué parte de la memoria se encuentran?}
@@ -104,6 +105,7 @@ La entrada proporcionada al programa para leer un puntero guardado en \texttt{fu
 \end{figure}
 
 
+\newpage
 \section{Ejecución del método \texttt{mostrarSecreto2}}
 
 \subsection{¿Cuál es la dirección del búfer asociado a la variable \texttt{resp}?}
@@ -120,16 +122,36 @@ Para conseguir la dirección de memoria de la variable \texttt{resp} mediante \t
 
 \subsection{¿Qué datos de entrada proporcionas al programa para que \texttt{func[s]} lea a partir del 126º byte en \texttt{resp}, es decir, a partir de \texttt{resp[125]}?}
 
-Dirección de \texttt{mostrarSecreto2} = \emph{0x08048a54}\\
-Dirección de \texttt{resp} = \emph{0xbffff34f}\\
-Dirección de \texttt{func} = \emph{0x0804b064}\\
+Teniendo en cuenta los siguientes datos:
+\begin{itemize}
+\item Dirección de \texttt{mostrarSecreto2} = \emph{0x08048a54}
+\item Dirección de \texttt{resp} = \emph{0xbffff34f}
+\item Dirección de \texttt{func} = \emph{0x0804b064}
+\end{itemize}
 
-YYYYYY = 771674330\\
-Tiene que haber x A's\\
-XE = Dir. mostrarSecreto2\\
 
-Por lo tanto, me cagon dioooooooooos \textbf{completar}\\
+Por lo tanto se busca que:
+\begin{itemize}
+\item $resp + 125*4 = @mostrarSecreto2$
+\item $func + Y*4 = resp + 125*4$
+\end{itemize}
 
+
+Resolviendo con los datos anteriores se obtiene:
+\begin{itemize}
+\item $Y=\frac{@resp + 125*4 - @func}{4}=$\emph{771674330}
+\item $xEE...=@mostrarSecreto2=$\emph{0x08048a54}
+\item El número de \texttt{A} debe por lo tanto abarcar $125-len(771674330)-1=115$
+\end{itemize}
+
+Por lo tanto para explotar la vulnerabilidad se utilizará la siguiente entrada:
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.9]{images/input_segundo_logro.png}
+\caption{Captura de pantalla de la entrada necesaria para obtener el segundo logro}
+\label{fig:inputSegundoLogro}
+\end{figure}
 
 
 \subsection{¿Hay otra forma de conseguir la escritura del segundo mensaje secreto por pantalla?}
@@ -146,7 +168,7 @@ Hay que hacer que resp desborde la pila para que el \emph{saved eip} (dirección
 
 \section{Bola extra ????}
 
-Esto no lo hago ni aunque me paguen. 
+\textbf{{\Huge Esto no lo hago ni aunque me paguen.}}
 
 
 
