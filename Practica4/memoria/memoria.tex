@@ -100,7 +100,7 @@ La entrada proporcionada al programa para leer un puntero guardado en \texttt{fu
 \begin{figure}[h!]`
 \centering
 \includegraphics[scale=0.8]{images/primer_logro.png}
-\caption{Captura de pantalla del resultado de la ejecución de \texttt{mostraSecreto1}}
+\caption{Captura de pantalla del resultado de la ejecución de \texttt{mostrarSecreto1}}
 \label{fig:mostrarSecreto1}
 \end{figure}
 
@@ -177,8 +177,69 @@ Por lo tanto para sobrescribir el registro \emph{eip} se deberá hacer que la va
 
 \section{Comentar las contramedidas}
 
-\textbf{{\Huge Esto lo hace JTAMBO99}}
+\subsection{ASLR} 
+Para poder reactivar esta contramedida se debe ejecutar el siguiente comando:\\
 
+\texttt{\$ sudo sysctl -w kernel.randomize\_va\_space=2}\\
+
+De esta manera se consigue la asignación aleatoria de las direcciones en el espacio de memoria.
+Si se procede a redireccionar la ejecución del programa y mostrar la función \textit{mostrarSecreto2()} utilizando el primer método descrito, se muestra lo siguiente:
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.6]{images/contramedida_1.png}
+	\caption{Captura de pantalla del intento de redireccionar código tras activar la primera contramedida (\textit{ASLR})}
+	\label{fig:contramedida1}
+\end{figure}
+
+Como se puede observar, la dirección de la variable local \textit{resp} (\textit{0xbff70c8f}) ha variado con respecto a la que se había obtenido tras desactivar la contramedida (\textit{0xbffff34f}). De hecho, la dirección varía con cada ejecución. Sin embargo, las direcciones de \textit{func} y de la función \textit{mostrarSecreto2()} no se han visto modificadas.\\
+La activación de esta contramedida hace más difícil los ataques de redirección, ya que al variar algunas direcciones de memoria, se debe volver a realizar los cálculos necesarios para calcular la entrada de tipo \textit{YYYYYYYYYx00A...AxEExEExEExEE}.
+
+\subsection{Canarios de pila}
+
+Para poder reactivar la protección contra los canarios de pila, se debe compilar el programa de la siguiente manera: \\
+
+\texttt{\$ g++ -z execstack -ggdb carrito.cpp -o carrito}\\
+
+La compilación activa esta contramedida por defecto. En el caso que se quiera indicar el flag de forma explícita, se debe compilar de la siguiente forma:\\
+
+\texttt{\$ g++ -fstack-protector -z execstack -ggdb carrito.cpp -o carrito}\\
+
+Esta contramedida lo que hace es proteger a funciones vulnerables que contienen:  
+\begin{itemize}
+	\item Un array de carácteres de más de 8 Bytes.
+	\item Un entero (de 8 bits) de más de 8 Bytes.
+	\item Una llamada a la función \textit{alloca()} con un tamaño mayor a 8 Bytes.
+\end{itemize}
+
+Si se intenta realizar la redirección del programa siguiendo los pasos que se han mencionado en puntos anteriores, el propio programa aborta la ejecución al detectarse uno de los casos mencionados anteriormente, tal y como se puede observar en la siguiente figura:
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.6]{images/contramedida_2.png}
+	\caption{Captura de pantalla del intento de redireccionar código tras activar la segunda contramedida (protección ante canarios de pila)}
+	\label{fig:contramedida2}
+\end{figure}
+
+Se observa que si un programa es compilado aplicando esta contramedida, resulta casi imposible realizar este tipo de ataques, ya que el programa abortará la ejecución sin poder acceder a la dirección de memoria deseada.
+
+\subsection{Pila no ejecutable (NX)}
+Para activar la contramedida que evita que la pila sea ejecutable, se debe compilar el programa de la siguiente manera: \\
+
+\texttt{g++ -fno-stack-protector -z noexecstack -ggdb carrito.cpp -o carrito}\\
+
+Cabe destacar que se ha vuelto a desactivar la contramedida de canario de pila, ya que se quiere observar el efecto que causa cada una de las contramedidas por separado. La contramedida \textit{ASLR} también permanece desactivada.\\
+
+Si se activa esta contramedida, se deshabilita la ejecución de la pila. Como se muestra a continuación, ejecutando \texttt{readelf -l carrito | grep -A2 -i stack} se puede observar el comportamiento de la pila del programa indicado.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.6]{images/contramedida_3.png}
+	\caption{Captura de pantalla de aplicación de la contramedida contra la pila ejecutable (NX)}
+	\label{fig:contramedida3}
+\end{figure}
+
+Se observa que, una vez activada la contramedida, la pila no puede ser ejecutada (\textit{GNU\_STACK} = RW). En caso contrario, sí que puede ser ejecutada (RWE).
+Sin embargo, se puede realizar el ataque de redirección de ejecución mediante los dos métodos mencionados en puntos anteriores (también se puede realizar el ataque de mostrarSecreto1()). Por ello, la activación de la contramedida de la pila ejecutable no evita que el programa sea vulnerable.
 
 
 \end{document}
