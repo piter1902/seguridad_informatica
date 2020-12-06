@@ -110,7 +110,7 @@ La entrada proporcionada al programa para leer un puntero guardado en \texttt{fu
 
 \subsection{¿Cuál es la dirección del búfer asociado a la variable \texttt{resp}?}
 
-Para conseguir la dirección de memoria de la variable \texttt{resp} mediante \texttt{gdb} se utilizarán los siguientes comandos. El comando \texttt{backtrace} (\texttt{bt}) servirá para obtener la pila de ejecución (\emph{backtrace}) del programa (Figura \textbf{numFigura}). Tras esto se ejecutará el comando \texttt{frame 9} (\texttt{f 9}). Este comando establecerá el contexto al de la función \texttt{main}. Una vez situados en este contexto se ejecutará \texttt{print \&{}main::resp}. La dirección de memoria asociada a la variable \texttt{resp} será: \emph{0xbffff34f}\\
+Para conseguir la dirección de memoria de la variable \texttt{resp} mediante \texttt{gdb} se utilizarán los siguientes comandos. El comando \texttt{backtrace} (\texttt{bt}) servirá para obtener la pila de ejecución (\emph{backtrace}) del programa (Figura \ref{fig:bt}). Tras esto se ejecutará el comando \texttt{frame 9} (\texttt{f 9}). Este comando establecerá el contexto al de la función \texttt{main}. Una vez situados en este contexto se ejecutará \texttt{print \&{}main::resp}. La dirección de memoria asociada a la variable \texttt{resp} será: \emph{0xbffff34f}\\
 
 \begin{figure}[h!]
 \centering
@@ -133,13 +133,13 @@ Teniendo en cuenta los siguientes datos:
 Por lo tanto se busca que:
 \begin{itemize}
 \item $resp + 125*4 = @mostrarSecreto2$
-\item $func + Y*4 = resp + 125*4$
+\item $func + Y*4 = resp + 125$
 \end{itemize}
 
 
 Resolviendo con los datos anteriores se obtiene:
 \begin{itemize}
-\item $Y=\frac{@resp + 125*4 - @func}{4}=$\emph{771674330}
+\item $Y=\frac{@resp + 125 - @func}{4}=$\emph{771674330}
 \item $xEE...=@mostrarSecreto2=$\emph{0x08048a54}
 \item El número de \texttt{A} debe por lo tanto abarcar $125-len(771674330)-1=115$
 \end{itemize}
@@ -175,15 +175,15 @@ Por lo tanto para sobrescribir el registro \emph{eip} se deberá hacer que la va
 \end{figure}
 
 
-\section{Comentar las contramedidas}
+\section{Posibles contramedidas}
 
-\subsection{ASLR} 
+\subsection{ASLR (Address Space Layout Randomization)} 
 Para poder reactivar esta contramedida se debe ejecutar el siguiente comando:\\
 
 \texttt{\$ sudo sysctl -w kernel.randomize\_va\_space=2}\\
 
 De esta manera se consigue la asignación aleatoria de las direcciones en el espacio de memoria.
-Si se procede a redireccionar la ejecución del programa y mostrar la función \textit{mostrarSecreto2()} utilizando el primer método descrito, se muestra lo siguiente:
+Si se procede a redireccionar la ejecución del programa y mostrar la función \textit{mostrarSecreto2()} utilizando el primer método descrito, se muestra lo descrito en la Figura \ref{fig:contramedida1}.
 
 \begin{figure}[h!]
 	\centering
@@ -193,7 +193,8 @@ Si se procede a redireccionar la ejecución del programa y mostrar la función \
 \end{figure}
 
 Como se puede observar, la dirección de la variable local \textit{resp} (\textit{0xbff70c8f}) ha variado con respecto a la que se había obtenido tras desactivar la contramedida (\textit{0xbffff34f}). De hecho, la dirección varía con cada ejecución. Sin embargo, las direcciones de \textit{func} y de la función \textit{mostrarSecreto2()} no se han visto modificadas.\\
-La activación de esta contramedida hace más difícil los ataques de redirección, ya que al variar algunas direcciones de memoria, se debe volver a realizar los cálculos necesarios para calcular la entrada de tipo \textit{YYYYYYYYYx00A...AxEExEExEExEE}.
+La activación de esta contramedida hace más difícil los ataques de redirección, ya que al variar algunas direcciones de memoria, se debe volver a realizar los cálculos necesarios para calcular la entrada de tipo \textit{YYYYYYYYYx00A...AxEExEExEExEE}.\\
+
 
 \subsection{Canarios de pila}
 
@@ -212,7 +213,7 @@ Esta contramedida lo que hace es proteger a funciones vulnerables que contienen:
 	\item Una llamada a la función \textit{alloca()} con un tamaño mayor a 8 Bytes.
 \end{itemize}
 
-Si se intenta realizar la redirección del programa siguiendo los pasos que se han mencionado en puntos anteriores, el propio programa aborta la ejecución al detectarse uno de los casos mencionados anteriormente, tal y como se puede observar en la siguiente figura:
+Si se intenta realizar la redirección del programa siguiendo los pasos que se han mencionado en puntos anteriores, el propio programa aborta la ejecución al detectarse uno de los casos mencionados anteriormente, tal y como se puede observar en la Figura \ref{fig:contramedida2}.
 
 \begin{figure}[h!]
 	\centering
@@ -221,8 +222,10 @@ Si se intenta realizar la redirección del programa siguiendo los pasos que se h
 	\label{fig:contramedida2}
 \end{figure}
 
-Se observa que si un programa es compilado aplicando esta contramedida, resulta casi imposible realizar este tipo de ataques, ya que el programa abortará la ejecución sin poder acceder a la dirección de memoria deseada.
+Se observa que si un programa es compilado aplicando esta contramedida, resulta casi imposible realizar este tipo de ataques, ya que el programa abortará la ejecución sin poder acceder a la dirección de memoria deseada.\\
 
+
+\newpage
 \subsection{Pila no ejecutable (NX)}
 Para activar la contramedida que evita que la pila sea ejecutable, se debe compilar el programa de la siguiente manera: \\
 
@@ -231,6 +234,7 @@ Para activar la contramedida que evita que la pila sea ejecutable, se debe compi
 Cabe destacar que se ha vuelto a desactivar la contramedida de canario de pila, ya que se quiere observar el efecto que causa cada una de las contramedidas por separado. La contramedida \textit{ASLR} también permanece desactivada.\\
 
 Si se activa esta contramedida, se deshabilita la ejecución de la pila. Como se muestra a continuación, ejecutando \texttt{readelf -l carrito | grep -A2 -i stack} se puede observar el comportamiento de la pila del programa indicado.
+
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.6]{images/contramedida_3.png}
