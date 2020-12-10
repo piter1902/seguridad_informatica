@@ -15,13 +15,8 @@ public class Compra {
             e.printStackTrace();
         }
         // Escribir el saldo en pantalla
-        int saldoActual = 0;
-        try {
-            saldoActual = cuenta.obtenerSaldo();
-            System.out.println("Tu saldo actual es:" + saldoActual);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        int saldoActual = obtenerSaldoActual(cuenta);
+        System.out.println("Tu saldo actual es:" + saldoActual);
         // Escribir la lista de productos con sus precios
         System.out.println("Lista de productos:");
         String products = Tienda.muestraProductos();
@@ -32,11 +27,13 @@ public class Compra {
         String comprar = scanner.nextLine();
         // Comprueba que el saldo es suficiente para comprar el producto
         int saldoCompra = Tienda.obtenerPrecioProducto(comprar);
+        saldoActual = obtenerSaldoActual(cuenta);
         if (saldoActual >= saldoCompra) {
             // Saldo suficiente
             try {
                 carrito.meterProducto(comprar);
                 int saldoFinal = saldoActual - saldoCompra;
+                Thread.sleep(2000);
                 cuenta.establecerSaldo(saldoFinal);
                 System.out.println("Tu saldo es: " + saldoFinal);
             } catch (Exception e) {
@@ -59,6 +56,16 @@ public class Compra {
             }
         }
 
+    }
+
+    private static int obtenerSaldoActual(Cuenta cuenta) {
+        int ret = 0;
+        try {
+            ret = cuenta.obtenerSaldo();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return ret;
     }
 
 }
