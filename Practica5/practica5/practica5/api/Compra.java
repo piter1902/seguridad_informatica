@@ -27,19 +27,16 @@ public class Compra {
         String comprar = scanner.nextLine();
         // Comprueba que el saldo es suficiente para comprar el producto
         int saldoCompra = Tienda.obtenerPrecioProducto(comprar);
-        saldoActual = obtenerSaldoActual(cuenta);
-        if (saldoActual >= saldoCompra) {
-            // Saldo suficiente
-            try {
-                carrito.meterProducto(comprar);
-                int saldoFinal = saldoActual - saldoCompra;
-                Thread.sleep(2000);
-                cuenta.establecerSaldo(saldoFinal);
-                System.out.println("Tu saldo es: " + saldoFinal);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+        try{
+		cuenta.sacarDinero(saldoCompra);
+		carrito.meterProducto(comprar);
+		int saldoFinal = obtenerSaldoActual(cuenta);
+		System.out.println("Tu saldo es: " + saldoFinal);
+		
+	} catch (Exception e) {	
+		System.out.println(e.getMessage());
+	}
+	
         scanner.close();
         if (carrito != null) {
             try {

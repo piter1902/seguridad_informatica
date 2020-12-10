@@ -29,12 +29,17 @@ public class Cuenta {
      */
     public int obtenerSaldo() throws IOException {
         int saldo = 0;
-        try (FileLock fileLock = fc.tryLock(0L, Long.MAX_VALUE, false)) {
+	FileLock fileLock = null;
+        try {
+	    fileLock = fc.tryLock(0L, Long.MAX_VALUE, false);
             this.fp.seek(0);
             saldo = Integer.parseInt(this.fp.readLine());
         } catch (Exception e) {
             e.printStackTrace();
         }
+	if (fileLock != null){
+    	    fileLock.release();
+	}
         return saldo;
     }
 
@@ -45,13 +50,18 @@ public class Cuenta {
      * @param nuevoSaldo nuevo saldo que se quiere guardar en el fichero "cuenta.txt"
      */
     public void establecerSaldo(int nuevoSaldo) throws Exception {
-        try (FileLock flFileLock = fc.tryLock(0L, Long.MAX_VALUE, false)) {
+	FileLock fileLock = null;
+        try {
+	    fileLock = fc.tryLock(0L, Long.MAX_VALUE, false);
             this.fp.setLength(0);
             String str = Integer.valueOf(nuevoSaldo).toString() + '\n';
             this.fp.writeBytes(str);
         } catch (Exception e) {
             e.printStackTrace();
         }
+	if (fileLock != null){
+    	    fileLock.release();
+	}
     }
 
     /**
@@ -67,8 +77,11 @@ public class Cuenta {
      */
     public void sacarDinero(int cantidad) throws Exception {		
 	int dineroActual = obtenerSaldo();
-	if (dineroActual >= cantidad)
+	if (dineroActual >= cantidad){
 	   establecerSaldo(dineroActual - cantidad);
+	} else {
+		throw new RuntimeException("Saldo insuficiente.");	
+	}
     } 
 
 }
