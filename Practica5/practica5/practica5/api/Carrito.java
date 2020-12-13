@@ -1,7 +1,6 @@
 import java.io.File;
 import java.io.RandomAccessFile;
 
-
 public class Carrito {
     /**
      * Puntero al fichero "carrito.txt"
